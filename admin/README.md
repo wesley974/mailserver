@@ -7,4 +7,6 @@ cd /var/mailserver/admin
 
 # ./kill_app.sh to stop the app
 
-Browse https://ip_address:4200/getting_started
+HOW TO USE
+
+Just browse https://ip_address:4200/getting_started
