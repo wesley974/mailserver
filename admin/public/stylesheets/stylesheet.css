@@ -1,0 +1,705 @@
+html {
+  font: "Lucida Grande", Helvetica, Verdana, Arial 14px/1.5em;
+  background-color: #4B7399;
+}
+
+body, p, td, tr, th, h1, h2, h3, h4, h5, h6, ul, li
+{
+  font-family: "Lucida Grande", Helvetica, Verdana, Arial;
+}
+
+body
+{
+/*  margin: 1em;*/
+/*  font-size: 0.6em;*/
+}
+
+html>body
+{
+/*  font-size: 0.6em;*/
+}
+
+/* SORT OUT HEADER FORMATTING AND SIZES */
+h1, h2, h3, h4, h5 {font-weight: bold;}
+
+h1 { font-size: 1.8em; }
+h2 { font-size: 1.6em; }
+h3 { font-size: 1.5em; }
+h4 { font-size: 1.2em; }
+h5 { font-size: 1.1em; }
+h6 { font-size: 1em; }
+pre,code { font-size:1em; }
+
+#doc3 {
+/*  width: 1000px;
+  *width: 1050px;*/
+  background-color: #fff;
+  margin: 10px;
+  border: solid 1px black;
+}
+
+#bd { 
+  padding: 20px;
+  background-color: #fff;
+}
+
+/* HARMONIZE LINKS, KILL BORDER ON IMG LINKS */
+
+a {text-decoration: underline;}
+a:link, a:visited {color: #00f;}
+a:hover {color: #33f;}
+a:active {color: #fff;}
+a img, :link img, :visited img {border: none}
+
+/* link underlines tend to make hypertext less readable, 
+   because underlines obscure the shapes of the lower halves of words */
+
+:link,:visited { text-decoration:none }
+
+
+pre {
+  font-family: "Courier New", Courier, mono;
+  font-size: 12px;
+}
+
+.fixed_font {
+  font-family: "Courier New", Courier, mono;
+}
+
+fieldset
+{
+  border: 0;
+}
+
+fieldset div
+{
+  padding: 0.5em 0;
+}
+
+legend
+{
+  font-weight: bold;
+  padding: 0.3em 0.5em;
+  font-size: 1.2em;
+}
+
+label {
+  font-weight: bold;
+}
+
+blockquote
+{
+  margin:  1em;
+}
+
+select, textarea
+{
+  margin: 0.5em 0 0 0;
+}
+
+h1 {
+  padding-bottom: 0.2em;
+  margin-bottom: 0.5em;
+  border-bottom: 2px solid #ccc;
+}
+
+h2 {
+  font-size: 16px;
+  color: #06c;
+  padding-bottom: 0.5em;
+}
+
+h3 {
+  margin-bottom: 1.2em; 
+  background-color: #eee; 
+  padding: 0.5em 0;
+}
+
+input {
+  font-size: 110%;
+}
+
+a:hover
+{
+  text-decoration: underline;
+}
+
+caption
+{
+  text-align: left;
+  font-weight: bold;
+  font-size: 120%;
+  padding-bottom: 0.3em;
+  color: #757575;
+}
+
+caption.first
+{
+  margin-top: 0;
+}
+/*
+th
+{
+  background-color: #e9e9e9;
+  border: 1px solid #ccc;
+  color: #696969;
+  padding: 0.5em;
+  text-align: left;
+  font-weight: bold;
+}
+
+table
+{
+  width:  100%;
+  border-collapse: collapse;
+  text-align: left;
+  margin-bottom: 0.5em;
+}
+
+td
+{
+  border: 1px solid #ccc;
+  padding: 0.8em;
+}
+*/
+table .noborder td, table .noborder th {
+  border: 0;
+}
+
+.active-scaffold th a {
+  margin: 0.3em;
+}
+
+td.edit
+{
+  border: none;
+  text-align: left;
+}
+
+th.center, td.center
+{
+  text-align: center;
+}
+/*
+tfoot td
+{
+  border: none;
+  border-top: 2px solid #e5e5e5;
+}
+*/
+
+/* @override https://172.16.5.138:4200/stylesheets/application.css?1290847364 */
+
+/* @group Undo html */
+
+/* SET BASE FONT ATTRUBUTES */
+
+
+.mini td {
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+
+.mini th {
+  border: 0;
+}
+
+/* @end */
+
+/* @end */
+
+.submit
+{
+  margin-left: 13em;
+  margin-top: 1em;
+}
+
+#save
+{
+  margin-top: 1em;
+}
+
+.center
+{
+  text-align: center;
+}
+
+.margin-top2
+{
+  margin-top: 2em;
+}
+
+.margin-top4
+{
+  margin-top: 4em;
+}
+
+.margin-bottom2 {
+  margin-bottom: 2em;
+}
+
+.margin-bottom4 {
+  margin-bottom: 4em;
+}
+
+#content 
+{
+  border: 1px solid #e5e5e5;
+  padding: 2em;
+  font-size: 110%;
+  background-color: #fff;
+}
+
+div.scrolling
+{
+  overflow:auto;
+  border: 1px solid #ccc;
+  margin: 2em 4em;
+  padding: 0.5em;
+}
+
+/* @group Example */
+
+
+
+/* @end */
+
+/* @group Menu */
+
+#header
+{
+  background: url(/images/blueback.png) repeat-x;
+}
+
+#logintext, #logintext a {
+  text-align: right;
+  padding-bottom: 0.1em;
+  font-weight: normal;
+  color: #fff;
+}
+
+#footer
+{
+  color: #696969;
+  background-color: #efefef;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 1em;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+}
+
+/* @end */
+
+/* @group Page Styles */
+
+/* @group Dashboard */
+
+
+/* @end */
+
+/* @group login */
+
+#login
+{
+  text-align: center
+}
+
+#login fieldset
+{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 150px;
+  margin-bottom: 150px;
+  border: 1px solid orange;
+  width: 300px;
+  padding: 30px;
+}
+
+#login fieldset legend
+{
+  padding: 0.5em 1em;
+  color: gray;
+}
+
+#login label
+{
+  font-weight: bold;
+  color: gray;
+  margin-right: 0.5em;
+  width: 7em;
+  text-align: right;
+}
+
+#login form p
+{
+  text-align: right;
+  margin-right: 4em;
+}
+
+input
+{
+  font-size: 140%;
+}
+
+#auth #content {
+  margin: 180px auto;
+  padding: 0;
+  width: 500px;
+  border: 3px solid #003d85;
+  border: 1px solid black;
+}
+#auth h4 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 140%;
+}
+#auth form p {
+  padding: 3px;
+}
+#auth #submit {
+  margin-top: 10px;
+}
+#auth div.error, #auth div.notice {
+  margin: 10px 10px 10px 10px;
+  padding: 5px 10px;
+  font-weight: bold;
+}
+
+/* @end */
+
+/* @group Not logged in */
+
+.not_logged_in {
+  text-align: left;
+}
+
+.not_logged_in h3 {
+  background-color: inherit;
+  text-align: left;
+}
+
+.not_logged_in table {
+  width: auto;
+}
+
+.not_logged_in td, .not_logged_in th {
+  border: 1px solid #bbb;
+  padding: 5px;
+}
+
+.not_logged_in .fieldWithErrors
+{
+  background-color: inherit;
+  border: none;
+  padding: 0;
+  display: inline;
+}
+
+.not_logged_in .fieldWithErrors input {
+  border: 4px solid red;
+}
+
+.not_logged_in .fieldWithErrors label {
+  background-color: inherit;
+}
+
+/* @end */
+
+/* @end */
+
+.percent
+{
+  font-size: 80%;
+  color: #757575;
+  font-weight: bold;
+}
+
+table.left td {
+  padding: 0.3em;
+}
+
+table.left th {
+  padding-right: 15px;
+  border-right: 1px solid #e5e5e5;
+  font-weight: bold;
+}
+
+table.left td {
+  padding: 5px 10px;
+}
+
+table.left {
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  border: 0;
+}
+
+#date_hour {
+  margin-left: 1em;
+}
+
+.active-scaffold .description {
+  font-weight: bold;
+  color: #555 !important;
+}
+
+.active-scaffold label {
+  font-weight: bold !important;
+}
+
+
+div.example {
+	margin-top: 3em;
+	margin-bottom: 3em;
+	border: 1px solid #ccc;
+}
+
+div.example h1, div.example h2, div.example h3, div.example h4, div.example h5 {
+	margin-bottom: 0.5em;
+}
+
+div.example h1, div.example h2 {
+	background-color: #edf3fe;
+	padding: 0.5em;
+}
+
+div.example h3, div.example h4 {
+	padding-left: 3em;
+	margin: 1em 0 0 0;
+	background-color: inherit;
+}
+
+div.example p, div.example li {
+	line-height: 1.4em;
+	font-size: 120%;
+}
+
+div.example p {
+	padding: 0.5em 3em;
+}
+
+div.example li {
+	list-style: disc;
+	padding-bottom: 1em;
+}
+
+div.example li.last {
+	padding-bottom: 0em;
+}
+
+div.example ul {
+	list-style: disc;
+	padding-left: 3em; 
+	margin-left: 3em; 
+	margin-top: 1em; 
+	margin-bottom: 1em;
+}
+
+div.example td, div.example th {
+	border: 0;
+}
+
+div.example th {
+	background-color: inherit;
+	font-size: small;
+    background-color: #edf3fe;
+	color: black;
+	font-weight: normal;
+}
+
+div.example table {
+	margin-left: 3em;
+	margin-right: 3em;
+	width: 93%;
+}
+
+div.example .border td, div.example .border th {
+	border: 1px solid #ccc;
+	padding: 0.3em;
+	font-size: small;
+}
+
+div.example .border caption {
+	padding-left: 2.5em;
+}
+
+#shutdown {
+  font-size: 130%;
+}
+
+#shutdown form {
+  padding: 10px 0px;
+}
+
+#shutdown form a {
+  border: 2px solid gray; 
+  padding: 0.4em 1em; 
+  background-color: #efefef; 
+  margin: 10px 10px; 
+}
+
+#mainmenuheader
+{
+	background: url(/images/blueback.png) repeat-x;
+	color: #fff;
+	margin: 0;
+	padding: 5px 10px 5px 10px;
+	font-size: 25px;
+	border: 0;
+}
+
+#mainmenubar {
+	margin: 0 0 10px 0;      
+}
+
+#mainmenubar a {
+  font-size: 13px;
+}
+#mainmenubar ul li a:visited {
+  color: black;
+}
+#mainmenubar ul li a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+#mainmenubar ul li.admin {
+	float: right;
+	padding: 0;
+	margin: 0;
+}
+
+.yuimenubarnav li {
+	font-size: small;
+}
+
+.fieldWithErrors input, .fieldWithErrors textarea, .fieldWithErrors select  {
+  border: 2px solid #7F1310;
+  display: inline;
+  padding: 2px;
+}
+
+div.error
+{
+  background-color: #ff686e;
+  padding: 1em 2em;
+  margin: 1em auto;
+  font-size: small;
+  font-weight: bold;
+}
+
+#errorExplanation {
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #FFE3E3;
+}
+
+#errorExplanation h2 {
+  background-color: #7F1310;
+  color: white;
+  font-size: 115%;
+  font-weight: bold;
+  padding: 3px 6px;
+}
+
+#errorExplanation p {
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 20px;
+  font-size: 115%;
+}
+
+#errorExplanation ul {
+  margin-top: 1em;
+  margin-left: 4em;
+  font-size: 115%;
+}
+
+#errorExplanation li {
+  list-style-type: disc;
+}
+
+#form_row div.fieldWithErrors {
+  display: inline;
+  padding-right: 2px;
+}
+
+#form_row div.fieldWithErrors input, input.fieldWithErrors {
+  background-color: #fcc;
+}
+
+div.error p {
+  font-weight: bold;
+}
+
+div.error ul {
+  margin: 1em 3em;
+}
+
+div.error li {
+  list-style-type: circle;
+  line-height: 1.5em;
+  font-size: 120%;
+}
+
+div.notice {
+  background-color: #7cfe5e;
+  padding: 1em 2em;
+  margin: 1em auto;
+  font-size: small;
+  font-weight: bold;
+}
+
+
+#password_description
+{
+	font-size: 12px;
+	margin-left: 10px;
+	margin-top: 5px;
+	float: right;
+}
+
+#password_strength {
+	height:10px;
+}
+
+#password_strength_border {
+  margin-top: 7px;
+  margin-left: 10px;
+	width: 144px;
+	height: 10px;
+	border: 1px solid black;
+	float: right;
+}
+.strength0 {
+	width:144px;
+}
+
+.strength1 {
+	width:40px;
+	background:#ff0000;
+}
+
+.strength2 {	
+  width:60px;	
+	background:#ff5f5f;
+}
+
+.strength3 {
+	width:80px;
+	background:#56e500;
+}
+
+.strength4 {
+	background:#4dcd00;
+	width:100px;
+}
+
+.strength5 {
+	background:#399800;
+	width:144px;
+}

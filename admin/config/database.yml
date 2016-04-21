@@ -1,0 +1,31 @@
+development:
+  adapter: mysql
+  database: mail
+  username: mailadmin
+  password: mailadmin
+  socket: /var/run/mysql/mysql.sock
+  reconnect: true
+
+test:
+  adapter: mysql
+  database: mail
+  username: mailadmin
+  password: mailadmin
+  socket: /var/run/mysql/mysql.sock
+  reconnect: true
+
+production:
+  adapter: mysql
+  database: mail
+  username: mailadmin
+  password: mailadmin
+  socket: /var/run/mysql/mysql.sock
+  reconnect: true
+
+webmail_db:
+  adapter: mysql
+  database: webmail
+  username: webmail
+  password: webmail
+  socket: /var/run/mysql/mysql.sock
+  reconnect: true
