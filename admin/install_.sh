@@ -8,6 +8,8 @@ fi
 }
 
 DEFAULT=/var/mailserver
+mkdir -p $DEFAULT/admin/{log,tmp}
+
 echo "-- Git install"
 echo installpath=ftp2.fr.openbsd.org > /etc/pkg.conf
 pkg_add git

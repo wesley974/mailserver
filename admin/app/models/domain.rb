@@ -28,7 +28,7 @@ class Domain < ActiveRecord::Base
 
   def after_create
     logger.info "Creating directory /var/mailserver/mail/#{name}"
-    logger.info %x{mkdir -m 755 /var/mailserver/mail/#{name}}
+    logger.info %x{mkdir -p -m 755 /var/mailserver/mail/#{name}}
   end
 
   def before_update
