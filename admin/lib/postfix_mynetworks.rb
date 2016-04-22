@@ -22,7 +22,7 @@ class PostfixMynetworks
       break
     end
     Sudo.exec("/usr/local/sbin/postconf -e mynetworks=127.0.0.0/8 #{@networks.join(' ')}'")
-    Sudo.exec("/usr/local/sbin/postfix reload")
+    Sudo.exec("/usr/sbin/rcctl reload reload")
     true
   end
 
