@@ -35,18 +35,6 @@ ActiveRecord::Schema.define(:version => 20101216072412) do
     t.datetime "updated_at"
   end
 
-  create_table "greylists", :force => true do |t|
-    t.string   "action"
-    t.string   "clause"
-    t.string   "value"
-    t.string   "rcpt"
-    t.string   "description"
-    t.boolean  "nolog"
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "routings", :force => true do |t|
     t.string "destination", :limit => 128
     t.string "transport",   :limit => 128
@@ -82,13 +70,6 @@ ActiveRecord::Schema.define(:version => 20101216072412) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "quota"
-  end
-
-  create_table "whitelists", :force => true do |t|
-    t.string   "value"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
 end
