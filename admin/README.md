@@ -1,12 +1,12 @@
 INSTALL GUI
 
 cd /var/mailserver/admin
-./install_.sh
+./install_gui.sh
 ./build_db.sh
-./run_app.sh
+./run_gui.sh
 
-# ./kill_app.sh to stop the app
+# ./kill_gui.sh to stop the app
 
-HOW TO USE
+HOW TO USE/TEST GUI
 
 Just browse https://ip_address:4200/getting_started
