@@ -25,7 +25,7 @@ rm -rf $DEFAULT/admin/{tmp,log}/*
 
 echo "-- Set permissions"
 chmod -R 755 $DEFAULT/admin
-chmod -R 777 $DEFAULT/{tmp,log}
+chmod -R 777 $DEFAULT/admin/{tmp,log}
 
 echo "-- Create mail folder"
 mkdir -p $DEFAULT/mail
