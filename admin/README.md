@@ -4,6 +4,7 @@ cd /var/mailserver/admin
 ./install_gui.sh
 ./build_db.sh
 ./run_gui.sh
+
 # The script "kill_gui.sh" is used to stop the GUI.</p>
 </code></pre>
 

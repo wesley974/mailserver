@@ -105,7 +105,7 @@ install -m 644 $DEFAULT/admin/config/nginx.conf /etc/nginx/
 /usr/sbin/rcctl start nginx
 test_pkg
 
-echo " -- Create  databases"
+echo " -- Create spamcontrol database"
 /usr/local/bin/mysql < $DEFAULT/admin/config/spamcontrol.sql
 /usr/local/bin/mysql -e "grant select on mail.* to 'postfix'@'localhost' identified by 'postfix';"
 /usr/local/bin/mysql -e "grant all privileges on mail.* to 'mailadmin'@'localhost' identified by 'mailadmin';"
