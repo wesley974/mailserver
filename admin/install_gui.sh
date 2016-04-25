@@ -109,3 +109,6 @@ echo " -- Create spamcontrol database"
 /usr/local/bin/mysql < $DEFAULT/admin/config/spamcontrol.sql
 /usr/local/bin/mysql -e "grant select on mail.* to 'postfix'@'localhost' identified by 'postfix';"
 /usr/local/bin/mysql -e "grant all privileges on mail.* to 'mailadmin'@'localhost' identified by 'mailadmin';"
+
+echo " -- Link kill_gui.sh to /etc/rc.shutdown"
+ln -sf /var/mailserver/admin/kill_gui.sh /etc/rc.shutdown
