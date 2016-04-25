@@ -29,13 +29,12 @@ chmod -R 777 $DEFAULT/admin/{tmp,log}
 
 echo "-- Create mail folder"
 mkdir -p $DEFAULT/mail
-test_pkg
 
 echo "-- Install packages"
 pkg_add ImageMagick mariadb-server php-mysql-5.6.18 php-pdo_mysql-5.6.18 \
-    php-intl-5.6.18 xcache gtar-1.28p1 nginx-1.9.10 node \
-    ruby-1.8.7.374p5 ruby-gems-1.8.24 ruby-iconv-1.8.7.374 \
-    ruby-mysql-2.9.1p0 ruby-rake-0.9.2.2p0
+    php-intl-5.6.18 php-zip-5.6.18 xcache gtar-1.28p1 nginx-1.9.10 node \
+    php-pspell-5.6.18 ruby-1.8.7.374p5 ruby-gems-1.8.24 ruby-iconv-1.8.7.374 \
+    ruby-mysql-2.9.1p0 ruby-rake-0.9.2.2p0 php-mcrypt-5.6.18
 test_pkg
 
 echo "-- Link Python"
@@ -52,23 +51,21 @@ sed '/\[mysqld\]/ a\
     ' /etc/examples/my.cnf > /etc/my.cnf
 /usr/sbin/rcctl enable mysqld
 /usr/sbin/rcctl start mysqld
-test_pkg
 
 echo " -- Set PHP"
 ln -sf /etc/php-5.6.sample/intl.ini /etc/php-5.6/intl.ini
-ln -sf /etc/php-5.6.sample/mcrypt.ini /etc/php-5.6/mcrypt.ini
 ln -sf /etc/php-5.6.sample/mysql.ini /etc/php-5.6/mysql.ini
 ln -sf /etc/php-5.6.sample/pdo_mysql.ini /etc/php-5.6/pdo_mysql.ini
+ln -fs /etc/php-5.6.sample/xcache.ini /etc/php-5.6/xcache.ini
+ln -sf /etc/php-5.6.sample/mcrypt.ini /etc/php-5.6/mcrypt.ini
 ln -sf /etc/php-5.6.sample/pspell.ini /etc/php-5.6/pspell.ini
 ln -sf /etc/php-5.6.sample/zip.ini /etc/php-5.6/zip.ini
-ln -fs /etc/php-5.6.sample/xcache.ini /etc/php-5.6/xcache.ini
 ln -sf /usr/local/bin/php-5.6 /usr/local/bin/php
 echo "allow_url_fopen = On" >> /etc/php-5.6.ini
 echo "suhosin.session.encrypt = Off" >> /etc/php-5.6.ini
 install -m 644 $DEFAULT/admin/config/php-fpm.conf /etc
 /usr/sbin/rcctl enable php56_fpm
 /usr/sbin/rcctl start php56_fpm
-test_pkg
 
 echo " -- Set certificates"
 /usr/bin/openssl genrsa -out /etc/ssl/private/server.key 2048 2>/dev/null
@@ -103,7 +100,6 @@ install -m 644 $DEFAULT/admin/config/nginx.conf /etc/nginx/
 /usr/sbin/rcctl enable nginx
 /usr/sbin/rcctl set nginx flags -u
 /usr/sbin/rcctl start nginx
-test_pkg
 
 echo " -- Create spamcontrol database"
 /usr/local/bin/mysql < $DEFAULT/admin/config/spamcontrol.sql
