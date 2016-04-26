@@ -1,6 +1,6 @@
 <h2>INSTALL THE GUI</h2>
 <pre><code>
-cd /var/mailserver/admin
+cd /var/mailserver/install
 ./install_gui.sh
 ./build_db.sh
 ./run_gui.sh
@@ -13,6 +13,6 @@ cd /var/mailserver/admin
 
 <h2>INSTALL THE MAIL SYSTEM</h2>
 <pre><code>
-cd /var/mailserver/admin
+cd /var/mailserver/install
 ./install_system.sh
 </code></pre>

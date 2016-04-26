@@ -13,12 +13,8 @@ if [ $(uname -r) != "5.9" ]; then
 fi
 
 DEFAULT=/var/mailserver
-mkdir -p $DEFAULT/admin/{log,tmp}
 
-echo "-- Git install"
-echo installpath=ftp2.fr.openbsd.org > /etc/pkg.conf
-pkg_add git
-test_pkg
+mkdir -p $DEFAULT/admin/{log,tmp}
 
 echo "-- Remove old staff"
 rm -rf $DEFAULT/admin/{tmp,log}/*
@@ -26,6 +22,7 @@ rm -rf $DEFAULT/admin/{tmp,log}/*
 echo "-- Set permissions"
 chmod -R 755 $DEFAULT/admin
 chmod -R 777 $DEFAULT/admin/{tmp,log}
+chmod 755 $DEFAULT/install/*.sh
 
 echo "-- Create mail folder"
 mkdir -p $DEFAULT/mail
@@ -63,7 +60,7 @@ ln -sf /etc/php-5.6.sample/zip.ini /etc/php-5.6/zip.ini
 ln -sf /usr/local/bin/php-5.6 /usr/local/bin/php
 echo "allow_url_fopen = On" >> /etc/php-5.6.ini
 echo "suhosin.session.encrypt = Off" >> /etc/php-5.6.ini
-install -m 644 $DEFAULT/admin/config/php-fpm.conf /etc
+install -m 644 $DEFAULT/install/gui/php-fpm.conf /etc
 /usr/sbin/rcctl enable php56_fpm
 /usr/sbin/rcctl start php56_fpm
 
@@ -94,17 +91,16 @@ gem install rails -v=2.3.4
 ln -sf /usr/local/bin/rails18 /usr/local/bin/rails
 ln -sf /usr/local/bin/mongrel_rails18 /usr/local/bin/mongrel_rails
 
-
 echo " -- Set Nginx"
-install -m 644 $DEFAULT/admin/config/nginx.conf /etc/nginx/
+install -m 644 $DEFAULT/install/gui/nginx.conf /etc/nginx/
 /usr/sbin/rcctl enable nginx
 /usr/sbin/rcctl set nginx flags -u
 /usr/sbin/rcctl start nginx
 
 echo " -- Create spamcontrol database"
-/usr/local/bin/mysql < $DEFAULT/admin/config/spamcontrol.sql
+/usr/local/bin/mysql < $DEFAULT/install/gui/spamcontrol.sql
 /usr/local/bin/mysql -e "grant select on mail.* to 'postfix'@'localhost' identified by 'postfix';"
 /usr/local/bin/mysql -e "grant all privileges on mail.* to 'mailadmin'@'localhost' identified by 'mailadmin';"
 
 echo " -- Link kill_gui.sh to /etc/rc.shutdown"
-ln -sf /var/mailserver/admin/kill_gui.sh /etc/rc.shutdown
+ln -sf /var/mailserver/install/kill_gui.sh /etc/rc.shutdown
