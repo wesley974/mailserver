@@ -104,3 +104,17 @@ echo " -- Create spamcontrol database"
 
 echo " -- Link kill_gui.sh to /etc/rc.shutdown"
 ln -sf /var/mailserver/install/kill_gui.sh /etc/rc.shutdown
+
+echo " -- Tune system"
+/usr/sbin/sysctl kern.maxfiles=10000
+/usr/sbin/sysctl machdep.lidsuspend=0
+echo kern.maxfiles=10000 >> /etc/sysctl.conf
+echo machdep.lidsuspend=0 >> /etc/sysctl.conf
+cat <<EOF>>login.conf
+
+mysqld:\\
+         :openfiles-cur=1024:\\
+         :openfiles-max=2048:\\
+         :tc=daemon:
+
+EOF
