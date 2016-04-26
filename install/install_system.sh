@@ -14,8 +14,6 @@ fi
 
 DEFAULT=/var/mailserver
 
-function already {
-
 mkdir -p /var/db/spamassassin
 
 pkg_add roundcubemail clamav postfix-3.0.3p0-mysql p5-Mail-SpamAssassin \
@@ -35,19 +33,19 @@ echo " -- Set Ntpd"
 echo " -- Set Postfix"
 /usr/local/sbin/postfix-enable
 mkdir -p /etc/postfix/sql
-install -m 644 $DEFAULT/admin/config/system/postfix/* /etc/postfix
-install -m 644 $DEFAULT/admin/config/system/postfix-sql/* /etc/postfix/sql
+install -m 644 $DEFAULT/install/system/postfix/* /etc/postfix
+install -m 644 $DEFAULT/install/system/postfix-sql/* /etc/postfix/sql
 /usr/sbin/rcctl enable postfix
 /usr/sbin/rcctl start postfix
 
 echo " -- Set Spamassassin"
-install -m 644 $DEFAULT/admin/config/system/spamassassin/* /etc/mail/spamassassin/local.cf
+install -m 644 $DEFAULT/install/system/spamassassin/* /etc/mail/spamassassin/local.cf
 /usr/sbin/rcctl enable spamassassin
 /usr/sbin/rcctl start spamassassin
 /usr/local/bin/sa-update -v
 
 echo " -- Set ClamAV"
-install -m 644 $DEFAULT/admin/config/system/clamav/*clam* /etc 2> /dev/null
+install -m 644 $DEFAULT/install/system/clamav/*clam* /etc 2> /dev/null
 if [ ! -f /var/db/clamav/main.cld ]; then
 touch /var/log/clamd.log 2> /dev/null
 chown _clamav:_clamav /var/log/clamd.log
@@ -65,11 +63,20 @@ fi
 /usr/sbin/rcctl start freshclam
 /usr/sbin/rcctl start clamd
 /usr/sbin/rcctl start clamav_milter
-}
+
 echo " -- Set Dovecot"
-install -m 644 $DEFAULT/admin/config/system/dovecot/* /etc/dovecot
+install -m 644 $DEFAULT/install/system/dovecot/* /etc/dovecot
 touch /var/log/imap 2> /dev/null
 chgrp _dovecot /usr/local/libexec/dovecot/dovecot-lda
 chmod 4750 /usr/local/libexec/dovecot/dovecot-lda
 /usr/sbin/rcctl enable dovecot
+
+cat <<EOF>>login.conf
+dovecot:\\
+          :openfiles-cur=512:\\
+          :openfiles-max=2048:\\
+          :tc=daemon:
+
+EOF
+
 /usr/sbin/rcctl start dovecot
