@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
 
   def after_create
     %x{
-      cp -r /var/mailserver/admin/config/default_maildir /var/mailserver/mail/#{domain.name}/#{name}
+      cp -r /var/mailserver/install/gui/default_maildir /var/mailserver/mail/#{domain.name}/#{name}
       chown -R #{id}:#{id} /var/mailserver/mail/#{domain.name}/#{name}
       find /var/mailserver/mail/#{domain.name}/#{name} -type f -name .gitignore | xargs rm
       find /var/mailserver/mail/#{domain.name}/#{name} -type d | xargs chmod 750
