@@ -71,7 +71,7 @@ chgrp _dovecot /usr/local/libexec/dovecot/dovecot-lda
 chmod 4750 /usr/local/libexec/dovecot/dovecot-lda
 /usr/sbin/rcctl enable dovecot
 
-cat <<EOF>>login.conf
+cat <<EOF>>/etc/login.conf
 dovecot:\\
           :openfiles-cur=512:\\
           :openfiles-max=2048:\\
