@@ -110,7 +110,7 @@ echo " -- Tune system"
 /usr/sbin/sysctl machdep.lidsuspend=0
 echo kern.maxfiles=10000 >> /etc/sysctl.conf
 echo machdep.lidsuspend=0 >> /etc/sysctl.conf
-cat <<EOF>>login.conf
+cat <<EOF>>/etc/login.conf
 
 mysqld:\\
          :openfiles-cur=1024:\\
