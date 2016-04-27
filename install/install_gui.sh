@@ -14,6 +14,11 @@ fi
 
 DEFAULT=/var/mailserver
 
+touch $DEFAULT/.gitignore
+echo admin/tmp >> $DEFAULT/.gitignore
+echo admin/log >> $DEFAULT/.gitignore
+echo mail >> $DEFAULT/.gitignore
+
 mkdir -p $DEFAULT/admin/{log,tmp}
 
 echo "-- Remove old staff"
