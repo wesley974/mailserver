@@ -96,4 +96,4 @@ echo " -- Set Roundcube"
 /usr/local/bin/mysql webmail < /var/www/roundcubemail/SQL/mysql.initial.sql
 /usr/local/bin/mysql webmail -e "grant all privileges on webmail.* to 'webmail'@'localhost' identified by 'webmail'"
 (cd /var/www/roundcubemail;ftp http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types && chown www.www mime.types)
-cp $DEFAULT/install/system/roundcube/* /var/www/roundcubemail/config
+cp $DEFAULT/install/system/roundcube/*.php /var/www/roundcubemail/config
