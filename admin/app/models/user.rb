@@ -32,7 +32,7 @@ def after_create
       :username     => self.email,
       :last_login   => Time.new.strftime("%F %T"),
       :created      => Time.new.strftime("%F %T"),
-      :language     => "en_US",
+      :language     => "fr_FR",
       :mail_host    => "localhost",
       :preferences  => 'a:2:{s:16:"message_sort_col";s:4:"date";s:18:"message_sort_order";s:4:"DESC";}'
     )
