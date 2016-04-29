@@ -27,7 +27,28 @@ class User < ActiveRecord::Base
     self.password = @password1 unless @password1.blank?
   end
 
-  def after_create
+def after_create
+    WebmailUser.create!(
+      :username     => self.email,
+      :last_login   => Time.new.strftime("%F %T"),
+      :created      => Time.new.strftime("%F %T"),
+      :language     => "en_US",
+      :mail_host    => "localhost",
+      :preferences  => 'a:2:{s:16:"message_sort_col";s:4:"date";s:18:"message_sort_order";s:4:"DESC";}'
+    )
+    vm = WebmailUser.find_by_username(self.email)
+    WebmailIdentity.create!(
+      :user_id => vm.user_id,
+      :name => self.fullname,
+      :email => self.email,
+      :del => "0",
+      :standard => "1",
+      :html_signature => "0",
+      :organization => '',
+      :bcc => '',
+      :signature => '',
+      "reply-to" => self.email
+    )
     %x{
       cp -r /var/mailserver/install/gui/default_maildir /var/mailserver/mail/#{domain.name}/#{name}
       chown -R #{id}:#{id} /var/mailserver/mail/#{domain.name}/#{name}
@@ -45,6 +66,15 @@ class User < ActiveRecord::Base
   end
 
   def before_destroy
+    logger.info "Deleting user: #{name_and_email}"
+    vm = WebmailUser.find_by_username(self.email)
+    if vm
+      uid = vm.user_id
+      uid = WebmailUser.find_by_username(self.email).user_id
+      WebmailContact.delete_all ["user_id = ?", uid] if WebmailContact.find(:first, :conditions => ["user_id = ?", uid])
+      WebmailIdentity.delete_all ["user_id = ?", uid] if WebmailIdentity.find(:first, :conditions => ["user_id = ?", uid])
+      WebmailUser.delete_all ["user_id = ?", uid] if WebmailUser.find(:first, :conditions => ["user_id = ?", uid])
+    end
     @oldname = User.find(id).name
   end
 
