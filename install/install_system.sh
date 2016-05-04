@@ -13,6 +13,7 @@ if [ $(uname -r) != "5.9" ]; then
 fi
 
 DEFAULT=/var/mailserver
+PLUGINS=/var/www/roundcubemail/plugins
 
 mkdir -p /var/db/spamassassin
 
@@ -97,3 +98,13 @@ echo " -- Set Roundcube"
 /usr/local/bin/mysql webmail -e "grant all privileges on webmail.* to 'webmail'@'localhost' identified by 'webmail'"
 (cd /var/www/roundcubemail;ftp http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types && chown www.www mime.types)
 cp $DEFAULT/install/system/roundcube/*.php /var/www/roundcubemail/config
+
+echo " -- Set Roundcube sa plugin"
+(cd $PLUGINS && git clone https://github.com/JohnDoh/Roundcube-Plugin-SpamAssass
+in-User-Prefs-SQL.git sauserprefs)
+(cd $PLUGINS/sauserprefs && cp config.inc.php.dist config.inc.php)
+(cd $PLUGINS/sauserprefs && cp $DEFAULT/install/system/roundcube/plugins/sausersprefs/* .)
+
+echo " -- Set Roundcube password plugin"
+(cd $PLUGINS/password && cp $DEFAULT/install/system/roundcube/plugins/password/* .)
+
