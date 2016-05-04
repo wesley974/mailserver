@@ -108,3 +108,10 @@ in-User-Prefs-SQL.git sauserprefs)
 echo " -- Set Roundcube password plugin"
 (cd $PLUGINS/password && cp $DEFAULT/install/system/roundcube/plugins/password/* .)
 
+echo " -- Set Roundcube markasjunk plugin"
+(cd $PLUGINS && git clone https://github.com/JohnDoh/Roundcube-Plugin-Mark-as-Junk-2.git markasjunk2)
+(cd $PLUGINS/markasjunk2 && cp $DEFAULT/install/system/plugins/markasjunk2/config.inc.php .)
+
+echo " -- Set Roundcube sieverules plugin"
+(cd $PLUGINS && git clone https://github.com/JohnDoh/Roundcube-Plugin-SieveRules-Managesieve.git sieverules)
+(cd $PLUGINS/sieverules && cp $DEFAULT/install/system/plugins/sieverules/config.inc.php .)
