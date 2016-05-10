@@ -115,3 +115,6 @@ echo " -- Set Roundcube markasjunk plugin"
 echo " -- Set Roundcube sieverules plugin"
 (cd $PLUGINS && git clone https://github.com/JohnDoh/Roundcube-Plugin-SieveRules-Managesieve.git sieverules)
 (cd $PLUGINS/sieverules && cp $DEFAULT/install/system/plugins/sieverules/config.inc.php .)
+
+echo " -- Set Roundcube contextmenu plugin"
+(cd $PLUGINS && git clone https://github.com/JohnDoh/Roundcube-Plugin-Context-Menu.git contextmenu)
