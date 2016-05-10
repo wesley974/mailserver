@@ -28,7 +28,7 @@ $config['markasjunk2_unread_ham'] = false;
 
 // Add flag to messages marked as spam (flag will be removed when marking as ham)
 // If you do not want to use message flags set this to null
-$config['markasjunk2_spam_flag'] = 'Junk';
+$config['markasjunk2_spam_flag'] = 'Spam';
 
 // Add flag to messages marked as ham (flag will be removed when marking as spam)
 // If you do not want to use message flags set this to null
