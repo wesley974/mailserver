@@ -101,18 +101,18 @@ cp $DEFAULT/install/system/roundcube/*.php /var/www/roundcubemail/config
 
 echo " -- Set Roundcube sa plugin"
 (cd $PLUGINS && git clone https://github.com/JohnDoh/Roundcube-Plugin-SpamAssassin-User-Prefs-SQL.git sauserprefs)
-(cd $PLUGINS/sauserprefs && cp $DEFAULT/install/system/roundcube/plugins/sausersprefs/config.inc.php .)
+(cd $PLUGINS/sauserprefs && cp $DEFAULT/install/system/roundcube/plugins/sauserprefs/config.inc.php .)
 
 echo " -- Set Roundcube password plugin"
 (cd $PLUGINS/password && cp $DEFAULT/install/system/roundcube/plugins/password/config.inc.php .)
 
 echo " -- Set Roundcube markasjunk plugin"
 (cd $PLUGINS && git clone https://github.com/JohnDoh/Roundcube-Plugin-Mark-as-Junk-2.git markasjunk2)
-(cd $PLUGINS/markasjunk2 && cp $DEFAULT/install/system/plugins/markasjunk2/config.inc.php .)
+(cd $PLUGINS/markasjunk2 && cp $DEFAULT/install/system/roundcube/plugins/markasjunk2/config.inc.php .)
 
 echo " -- Set Roundcube sieverules plugin"
 (cd $PLUGINS && git clone https://github.com/JohnDoh/Roundcube-Plugin-SieveRules-Managesieve.git sieverules)
-(cd $PLUGINS/sieverules && cp $DEFAULT/install/system/plugins/sieverules/config.inc.php .)
+(cd $PLUGINS/sieverules && cp $DEFAULT/install/system/roundcube/plugins/sieverules/config.inc.php .)
 
 echo " -- Set Roundcube contextmenu plugin"
 (cd $PLUGINS && git clone https://github.com/JohnDoh/Roundcube-Plugin-Context-Menu.git contextmenu)
