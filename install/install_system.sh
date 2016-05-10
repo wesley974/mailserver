@@ -100,8 +100,7 @@ echo " -- Set Roundcube"
 cp $DEFAULT/install/system/roundcube/*.php /var/www/roundcubemail/config
 
 echo " -- Set Roundcube sa plugin"
-(cd $PLUGINS && git clone https://github.com/JohnDoh/Roundcube-Plugin-SpamAssass
-in-User-Prefs-SQL.git sauserprefs)
+(cd $PLUGINS && git clone https://github.com/JohnDoh/Roundcube-Plugin-SpamAssassin-User-Prefs-SQL.git sauserprefs)
 (cd $PLUGINS/sauserprefs && cp config.inc.php.dist config.inc.php)
 (cd $PLUGINS/sauserprefs && cp $DEFAULT/install/system/roundcube/plugins/sausersprefs/* .)
 
