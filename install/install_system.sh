@@ -101,11 +101,10 @@ cp $DEFAULT/install/system/roundcube/*.php /var/www/roundcubemail/config
 
 echo " -- Set Roundcube sa plugin"
 (cd $PLUGINS && git clone https://github.com/JohnDoh/Roundcube-Plugin-SpamAssassin-User-Prefs-SQL.git sauserprefs)
-(cd $PLUGINS/sauserprefs && cp config.inc.php.dist config.inc.php)
-(cd $PLUGINS/sauserprefs && cp $DEFAULT/install/system/roundcube/plugins/sausersprefs/* .)
+(cd $PLUGINS/sauserprefs && cp $DEFAULT/install/system/roundcube/plugins/sausersprefs/config.inc.php .)
 
 echo " -- Set Roundcube password plugin"
-(cd $PLUGINS/password && cp $DEFAULT/install/system/roundcube/plugins/password/* .)
+(cd $PLUGINS/password && cp $DEFAULT/install/system/roundcube/plugins/password/config.inc.php .)
 
 echo " -- Set Roundcube markasjunk plugin"
 (cd $PLUGINS && git clone https://github.com/JohnDoh/Roundcube-Plugin-Mark-as-Junk-2.git markasjunk2)
