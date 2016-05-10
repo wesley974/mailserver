@@ -421,7 +421,7 @@ $rcmail_config['drafts_mbox'] = 'Drafts';
 
 // store spam messages in this mailbox
 // NOTE: Use folder names with namespace prefix (INBOX. on Courier-IMAP)
-$rcmail_config['junk_mbox'] = 'Junk';
+$rcmail_config['junk_mbox'] = 'Spam';
 
 // store sent message is this mailbox
 // leave blank if sent messages should not be stored
