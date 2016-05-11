@@ -15,8 +15,10 @@ fi
 DEFAULT=/var/mailserver
 PLUGINS=/var/www/roundcubemail/plugins
 
+echo " -- Create spamassassin's home"
 mkdir -p /var/db/spamassassin
 
+echo " -- Install packages"
 pkg_add roundcubemail clamav postfix-3.0.3p0-mysql p5-Mail-SpamAssassin \
     dovecot-mysql dovecot-pigeonhole
 test_pkg
@@ -118,3 +120,9 @@ echo " -- Set Roundcube sieverules plugin"
 
 echo " -- Set Roundcube contextmenu plugin"
 (cd $PLUGINS && git clone https://github.com/JohnDoh/Roundcube-Plugin-Context-Menu.git contextmenu)
+
+echo " -- Tune system"
+/usr/sbin/sysctl kern.maxfiles=10000
+/usr/sbin/sysctl machdep.lidsuspend=0
+echo kern.maxfiles=10000 >> /etc/sysctl.conf
+echo machdep.lidsuspend=0 >> /etc/sysctl.conf

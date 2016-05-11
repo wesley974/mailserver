@@ -14,33 +14,34 @@ fi
 
 DEFAULT=/var/mailserver
 
+echo " -- Create log and tmp folders"
 mkdir -p $DEFAULT/admin/{log,tmp}
 
-echo "-- Remove old staff"
+echo " -- Remove old staff"
 rm -rf $DEFAULT/admin/{tmp,log}/*
 
-echo "-- Set permissions"
+echo " -- Set permissions"
 chmod -R 755 $DEFAULT/admin
 chmod -R 777 $DEFAULT/admin/{tmp,log}
 chmod 755 $DEFAULT/install/*.sh
 
-echo "-- Create mail folder"
+echo " -- Create mail folder"
 mkdir -p $DEFAULT/mail
 
-echo "-- Install packages"
+echo " -- Install packages"
 pkg_add ImageMagick mariadb-server php-mysql-5.6.18 php-pdo_mysql-5.6.18 \
     php-intl-5.6.18 php-zip-5.6.18 xcache gtar-1.28p1 nginx-1.9.10 node \
     php-pspell-5.6.18 ruby-1.8.7.374p5 ruby-gems-1.8.24 ruby-iconv-1.8.7.374 \
     ruby-mysql-2.9.1p0 ruby-rake-0.9.2.2p0 php-mcrypt-5.6.18
 test_pkg
 
-echo "-- Link Python"
+echo " -- Link Python"
 ln -sf /usr/local/bin/python2.7 /usr/local/bin/python
 ln -sf /usr/local/bin/python2.7-2to3 /usr/local/bin/2to3
 ln -sf /usr/local/bin/python2.7-config /usr/local/bin/python-config
 ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
 
-echo "-- Set MariaDB-server"
+echo " -- Set MariaDB-server"
 /usr/local/bin/mysql_install_db > /dev/null 2>&1
 mv /etc/my.cnf /etc/examples/
 sed '/\[mysqld\]/ a\
@@ -48,6 +49,14 @@ sed '/\[mysqld\]/ a\
     ' /etc/examples/my.cnf > /etc/my.cnf
 /usr/sbin/rcctl enable mysqld
 /usr/sbin/rcctl start mysqld
+cat <<EOF>>/etc/login.conf
+
+mysqld:\\
+         :openfiles-cur=1024:\\
+         :openfiles-max=2048:\\
+         :tc=daemon:
+
+EOF
 
 echo " -- Set PHP"
 ln -sf /etc/php-5.6.sample/intl.ini /etc/php-5.6/intl.ini
@@ -99,22 +108,6 @@ install -m 644 $DEFAULT/install/gui/nginx.conf /etc/nginx/
 
 echo " -- Create spamcontrol database"
 /usr/local/bin/mysql < $DEFAULT/install/gui/spamcontrol.sql
-/usr/local/bin/mysql -e "grant select on mail.* to 'postfix'@'localhost' identified by 'postfix';"
-/usr/local/bin/mysql -e "grant all privileges on mail.* to 'mailadmin'@'localhost' identified by 'mailadmin';"
 
 echo " -- Link kill_gui.sh to /etc/rc.shutdown"
 ln -sf /var/mailserver/install/kill_gui.sh /etc/rc.shutdown
-
-echo " -- Tune system"
-/usr/sbin/sysctl kern.maxfiles=10000
-/usr/sbin/sysctl machdep.lidsuspend=0
-echo kern.maxfiles=10000 >> /etc/sysctl.conf
-echo machdep.lidsuspend=0 >> /etc/sysctl.conf
-cat <<EOF>>/etc/login.conf
-
-mysqld:\\
-         :openfiles-cur=1024:\\
-         :openfiles-max=2048:\\
-         :tc=daemon:
-
-EOF
