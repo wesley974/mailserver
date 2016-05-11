@@ -9,8 +9,6 @@ mysqladmin drop spamcontrol
 mysqladmin drop webmail
 
 /bin/sh $DEFAULT/install/build_db.sh
-/usr/local/bin/mysql -e "grant select on mail.* to 'postfix'@'localhost' identified by 'postfix';"
-/usr/local/bin/mysql -e "grant all privileges on mail.* to 'mailadmin'@'localhost' identified by 'mailadmin';"
 
 /usr/local/bin/mysql < $DEFAULT/install/gui/spamcontrol.sql
 
