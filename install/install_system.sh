@@ -38,6 +38,7 @@ echo " -- Set Postfix"
 mkdir -p /etc/postfix/sql
 install -m 644 $DEFAULT/install/system/postfix/* /etc/postfix
 install -m 644 $DEFAULT/install/system/postfix-sql/* /etc/postfix/sql
+/usr/bin/newaliases
 /usr/sbin/rcctl enable postfix
 /usr/sbin/rcctl start postfix
 
