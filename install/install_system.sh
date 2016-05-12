@@ -33,15 +33,6 @@ echo " -- Set Ntpd"
 /usr/sbin/rcctl set ntpd flags -s
 /usr/sbin/rcctl restart ntpd
 
-echo " -- Set Postfix"
-/usr/local/sbin/postfix-enable
-mkdir -p /etc/postfix/sql
-install -m 644 $DEFAULT/install/system/postfix/* /etc/postfix
-install -m 644 $DEFAULT/install/system/postfix-sql/* /etc/postfix/sql
-/usr/bin/newaliases
-/usr/sbin/rcctl enable postfix
-/usr/sbin/rcctl start postfix
-
 echo " -- Set Spamassassin"
 install -m 644 $DEFAULT/install/system/spamassassin/* /etc/mail/spamassassin/local.cf
 /usr/sbin/rcctl enable spamassassin
@@ -68,6 +59,15 @@ fi
 /usr/sbin/rcctl start freshclam
 /usr/sbin/rcctl start clamd
 /usr/sbin/rcctl start clamav_milter
+
+echo " -- Set Postfix"
+/usr/local/sbin/postfix-enable
+mkdir -p /etc/postfix/sql
+install -m 644 $DEFAULT/install/system/postfix/* /etc/postfix
+install -m 644 $DEFAULT/install/system/postfix-sql/* /etc/postfix/sql
+/usr/bin/newaliases
+/usr/sbin/rcctl enable postfix
+/usr/sbin/rcctl start postfix
 
 echo " -- Set Dovecot"
 install -m 644 $DEFAULT/install/system/dovecot/* /etc/dovecot
