@@ -1,4 +1,6 @@
 admin/tmp
 admin/log
+account/tmp
+account/log
 mail
 install/test.sh
