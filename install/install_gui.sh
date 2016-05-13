@@ -16,13 +16,16 @@ DEFAULT=/var/mailserver
 
 echo " -- Create log and tmp folders"
 mkdir -p $DEFAULT/admin/{log,tmp}
+mkdir -p $DEFAULT/account/{log,tmp}
 
 echo " -- Remove old staff"
 rm -rf $DEFAULT/admin/{tmp,log}/*
+rm -rf $DEFAULT/account/{tmp,log}/*
 
 echo " -- Set permissions"
-chmod -R 755 $DEFAULT/admin
+chmod -R 755 $DEFAULT/{admin,account}
 chmod -R 777 $DEFAULT/admin/{tmp,log}
+chmod -R 777 $DEFAULT/account/{tmp,log}
 chmod 755 $DEFAULT/install/*.sh
 
 echo " -- Create mail folder"
