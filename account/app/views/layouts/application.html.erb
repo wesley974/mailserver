@@ -29,7 +29,7 @@
     <div class="bd">
       <ul class="first-of-type">
         <% unless current_user.admin_for.count.zero? -%>
-        <li class="yuimenubaritem first-of-type"><%= link_to "Domain Admin", {:controller => :domains}, {:class => "yuimenubaritemlabel"} -%></li>
+        <li class="yuimenubaritem first-of-type"><%= link_to "Domain Admin app", {:controller => :domains}, {:class => "yuimenubaritemlabel"} -%></li>
         <% end -%>
       </ul>            
     </div>
