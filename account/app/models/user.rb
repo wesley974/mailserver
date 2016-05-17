@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   def before_save
     self.name.downcase!
     self.email = name + "@" + domain.name
-    self.home = "/var/mailserv/mail/" + self.domain.name + "/" + name + "/home"
+    self.home = "/var/mailserver/mail/" + self.domain.name + "/" + name + "/home"
     self.quota = self.domain.quota if self.domain && self.domain.quota && !self.quota
   end
 
@@ -30,9 +30,8 @@ class User < ActiveRecord::Base
     WebmailUser.new(
       :username => self.email,
       :last_login => Time.new.strftime("%F %T"),
-      :alias => self.fullname,
       :created => Time.new.strftime("%F %T"),
-      :language => "en_US",
+      :language => "fr_FR",
       :mail_host => "localhost",
       :preferences => 'a:2:{s:16:"message_sort_col";s:4:"date";s:18:"message_sort_order";s:4:"DESC";}'
     ).save
@@ -51,10 +50,10 @@ class User < ActiveRecord::Base
     vmi["reply-to"] = self.email
     vmi.save
     %x{
-      sudo cp -r /var/mailserv/config/default_maildir /var/mailserv/mail/#{domain.name}/#{name}
-      sudo chown -R #{id}:#{id} /var/mailserv/mail/#{domain.name}/#{name}
-      find /var/mailserv/mail/#{domain.name}/#{name} -type f -name .gitignore | xargs sudo rm
-      find /var/mailserv/mail/#{domain.name}/#{name} -type d | xargs sudo chmod 750
+      cp -r /var/mailserver/install/gui/default_maildir /var/mailserver/mail/#{domain.name}/#{name}
+      chown -R #{id}:#{id} /var/mailserver/mail/#{domain.name}/#{name}
+      find /var/mailserver/mail/#{domain.name}/#{name} -type f -name .gitignore | xargs rm
+      find /var/mailserver/mail/#{domain.name}/#{name} -type d | xargs chmod 750
     }
   end
 
@@ -63,7 +62,7 @@ class User < ActiveRecord::Base
   end
 
   def after_update
-    %x{sudo mv /var/mailserv/mail/#{domain.name}/#{@oldname} /var/mailserv/mail/#{domain.name}/#{name}}
+    %x{mv /var/mailserver/mail/#{domain.name}/#{@oldname} /var/mailserver/mail/#{domain.name}/#{name}}
   end
 
   def before_destroy
@@ -79,7 +78,7 @@ class User < ActiveRecord::Base
   end
 
   def after_destroy
-    %x{sudo rm -rf /var/mailserv/mail/#{domain.name}/#{@oldname}}
+    %x{rm -rf /var/mailserver/mail/#{domain.name}/#{@oldname}}
   end
 
   def validate

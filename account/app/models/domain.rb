@@ -19,8 +19,8 @@ class Domain < ActiveRecord::Base
   end
 
   def after_create
-    logger.info "Creating directory /var/mailserv/mail/#{name}"
-    logger.info %x{sudo mkdir -m 755 /var/mailserv/mail/#{name}}
+    logger.info "Creating directory /var/mailserver/mail/#{name}"
+    logger.info %x{mkdir -m 755 /var/mailserver/mail/#{name}}
   end
 
   def before_update
@@ -29,12 +29,12 @@ class Domain < ActiveRecord::Base
 
   def after_update
     if @oldname != name
-      %x{sudo mv /var/mailserv/mail/#{@oldname} /var/mailserv/mail/#{name}}
+      %x{mv /var/mailserver/mail/#{@oldname} /var/mailserver/mail/#{name}}
     end
   end
 
   def after_save
-    system("sudo /usr/local/bin/rake RAILS_ENV=production -f /var/mailserv/admin/Rakefile mailserver:configure:domains &")
+    system("/usr/local/bin/rake RAILS_ENV=production -f /var/mailserver/admin/Rakefile mailserver:configure:domains &")
   end
 
   def before_destroy
@@ -49,7 +49,7 @@ class Domain < ActiveRecord::Base
   end
 
   def after_destroy
-    %x{sudo rm -rf /var/mailserv/mail/#{@oldname}}
+    %x{rm -rf /var/mailserver/mail/#{@oldname}}
   end
 
 end
