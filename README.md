@@ -12,6 +12,7 @@ Includes:
 - packet filter
 - roundcube webmail
 
+*The admin and account apps forked from the free [mailserv project](https://github.com/mailserv/mailserv).
 
 ## Installation
 
@@ -52,5 +53,6 @@ Don't forget to tune your hosts file!
     cd /var/mailserver/install
     ./install_system.sh 
     ./enable_admin_rc.sh
+    ./sysmail.sh
     
 Enjoy!
