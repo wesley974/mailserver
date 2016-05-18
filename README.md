@@ -35,7 +35,7 @@ Includes:
     
 #### Install the GUI
 
-Don't forget to tune your hosts file!
+Don't forget to tune your hosts file and verify your hostname!
 
     cd /var/mailserver/install
     ./install_gui.sh
