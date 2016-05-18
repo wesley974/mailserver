@@ -42,8 +42,6 @@ Don't forget to tune your hosts file and verify your hostname!
     ./build_db.sh
     ./run_gui.sh
 
-The script 'kill_gui.sh' is used to stop the GUI.
-
 ##### HOW TO USE/TEST THE GUI
 
 Just browse https://ip_address:4200/getting_started
