@@ -91,7 +91,7 @@ cp /etc/newsyslog.conf /etc/examples
 head -n 16 /etc/examples/newsyslog.conf > /etc/newsyslog.conf
 
 cat <<EOF>>/etc/newsyslog.conf
-/var/www/logs/access.log                644  4     *    $W0   Z /var/run/nginx.pid SIGUSR1
+/var/www/logs/access.log                644  4     *    \$W0   Z /var/run/nginx.pid SIGUSR1
 /var/www/logs/error.log                 644  7     250  *     Z /var/run/nginx.pid SIGUSR1
 
 EOF
