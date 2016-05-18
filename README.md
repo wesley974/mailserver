@@ -20,12 +20,7 @@ Includes:
 
     export PKG_PATH=http://ftp2.fr.openbsd.org/pub/OpenBSD/5.9/packages/amd64/
     pkg_add git
-    
-#### Fetch the project
 
-    cd /var
-    git clone https://github.com/wesley974/mailserver
-    
 #### Update the box
 
     cd /usr/local/sbin
@@ -33,7 +28,14 @@ Includes:
     chmod +x openup
     openup && reboot
     
+#### Fetch the project
+
+    cd /var
+    git clone https://github.com/wesley974/mailserver
+    
 #### Install the GUI
+
+Don't forget to tune your hosts file!
 
     cd /var/mailserver/install
     ./install_gui.sh
@@ -48,11 +50,10 @@ Just browse https://ip_address:4200/getting_started
 
 #### INSTALL THE MAIL SYSTEM
 
-Don't forget to tune your hosts file!
-
     cd /var/mailserver/install
     ./install_system.sh 
     ./enable_admin_rc.sh
     ./sysmail.sh
+    
     
 Enjoy!
