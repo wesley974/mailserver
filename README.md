@@ -40,7 +40,6 @@ Don't forget to tune your hosts file and verify your hostname!
     cd /var/mailserver/install
     ./install_gui.sh
     ./build_db.sh
-    ./run_gui.sh
 
 #### INSTALL THE MAIL SYSTEM
 
@@ -50,6 +49,10 @@ Don't forget to tune your hosts file and verify your hostname!
     ./sysmail.sh
 
 ## USAGE
+
+### Execute the apps
+
+    ./run_gui.sh
 
 #### Set the mailserver administrator
 
