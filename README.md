@@ -46,7 +46,6 @@ Don't forget to tune your hosts file and verify your hostname!
     cd /var/mailserver/install
     ./install_system.sh 
     ./enable_admin_rc.sh
-    ./sysmail.sh
 
 ## USAGE
 
@@ -57,6 +56,10 @@ Don't forget to tune your hosts file and verify your hostname!
 #### Set the mailserver administrator
 
 Just browse https://ip_address:4200/getting_started
+
+Then set the email for root messages :
+
+    /var/mailserver/install/sysmail.sh
 
 #### The mailserver app
 
