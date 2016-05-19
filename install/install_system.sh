@@ -122,6 +122,11 @@ echo " -- Set Roundcube sieverules plugin"
 echo " -- Set Roundcube contextmenu plugin"
 (cd $PLUGINS && git clone https://github.com/JohnDoh/Roundcube-Plugin-Context-Menu.git contextmenu)
 
+echo " -- Set Packet Filter"
+(cd $DEFAULT/install/system && git clone https://github.com/wesley974/rmspams)
+chmod +x $DEFAULT/install/system/rmspams/install.sh
+(cd $DEFAULT/install/system/rmspams && $DEFAULT/install/system/rmspams/install.sh)
+
 echo " -- Tune system"
 /usr/sbin/sysctl kern.maxfiles=10000
 /usr/sbin/sysctl machdep.lidsuspend=0
