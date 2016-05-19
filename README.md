@@ -49,7 +49,7 @@ Don't forget to tune your hosts file and verify your hostname!
 
 ## USAGE
 
-### Execute the apps
+#### Execute the apps
 
     /var/mailserver/install/run_gui.sh
 
