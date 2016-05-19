@@ -1,7 +1,7 @@
 ## The scripts
 
 ### build_db.sh
-Create mail database and his tables.
+Create only the mail database.
 
 ### enable_admin_rc.sh
 Enable the 'Admin' button for the both Roundcube themes (larry and classic).
