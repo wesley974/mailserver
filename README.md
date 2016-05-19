@@ -42,16 +42,26 @@ Don't forget to tune your hosts file and verify your hostname!
     ./build_db.sh
     ./run_gui.sh
 
-##### HOW TO USE/TEST THE GUI
-
-Just browse https://ip_address:4200/getting_started
-
 #### INSTALL THE MAIL SYSTEM
 
     cd /var/mailserver/install
     ./install_system.sh 
     ./enable_admin_rc.sh
     ./sysmail.sh
-    
+
+## USAGE
+
+#### Set the mailserver administrator
+
+Just browse https://ip_address:4200/getting_started
+
+#### The mailserver app
+
+https://ip_address:4200
+
+#### Your webmail
+
+https://ip_address
+
     
 Enjoy!
