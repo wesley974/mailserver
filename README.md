@@ -52,7 +52,7 @@ Don't forget to tune your hosts file and verify your hostname!
 
 ### Execute the apps
 
-    ./run_gui.sh
+    /var/mailserver/install/run_gui.sh
 
 #### Set the mailserver administrator
 
