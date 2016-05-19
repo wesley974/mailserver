@@ -41,7 +41,7 @@ Don't forget to tune your hosts file and verify your hostname!
     ./install_gui.sh
     ./build_db.sh
 
-#### INSTALL THE MAIL SYSTEM
+#### Install the mail system
 
     cd /var/mailserver/install
     ./install_system.sh 
