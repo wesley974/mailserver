@@ -50,8 +50,7 @@ mv /etc/my.cnf /etc/examples/
 sed '/\[mysqld\]/ a\
     bind-address    = 127.0.0.1
     ' /etc/examples/my.cnf > /etc/my.cnf
-/usr/sbin/rcctl enable mysqld
-/usr/sbin/rcctl start mysqld
+
 cat <<EOF>>/etc/login.conf
 
 mysqld:\\
@@ -62,6 +61,9 @@ mysqld:\\
 EOF
 
 /usr/bin/cap_mkdb /etc/login.conf
+
+/usr/sbin/rcctl enable mysqld
+/usr/sbin/rcctl start mysqld
 
 echo " -- Set PHP"
 ln -sf /etc/php-5.6.sample/intl.ini /etc/php-5.6/intl.ini
