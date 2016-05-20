@@ -135,6 +135,6 @@ echo " -- Tune system"
 echo kern.maxfiles=10000 >> /etc/sysctl.conf
 echo machdep.lidsuspend=0 >> /etc/sysctl.conf
 
-cat login.conf | sed 's/:openfiles-cur=128/:openfiles-cur=1024/' > /tmp/login.conf.new
+cat /etc/login.conf | sed 's/:openfiles-cur=128/:openfiles-cur=1024/' > /tmp/login.conf.new
 mv /tmp/login.conf.new /etc/login.conf
 /usr/bin/cap_mkdb /etc/login.conf
