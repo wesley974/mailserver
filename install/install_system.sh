@@ -95,6 +95,8 @@ dovecot:\\
 
 EOF
 
+/usr/bin/cap_mkdb /etc/login.conf
+
 cp $DEFAULT/install/system/dovecot/quota-warning.sh /usr/local/bin
 chmod +x /usr/local/bin/quota-warning.sh
 /usr/sbin/rcctl start dovecot

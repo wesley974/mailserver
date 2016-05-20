@@ -61,6 +61,8 @@ mysqld:\\
 
 EOF
 
+/usr/bin/cap_mkdb /etc/login.conf
+
 echo " -- Set PHP"
 ln -sf /etc/php-5.6.sample/intl.ini /etc/php-5.6/intl.ini
 ln -sf /etc/php-5.6.sample/mysql.ini /etc/php-5.6/mysql.ini
