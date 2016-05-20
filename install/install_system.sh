@@ -70,7 +70,7 @@ install -m 644 $DEFAULT/install/system/postfix-sql/* /etc/postfix/sql
 /usr/sbin/rcctl start postfix
 
 echo " -- Set Dovecot"
-install -m 644 $DEFAULT/install/system/dovecot/* /etc/dovecot
+install -m 644 $DEFAULT/install/system/dovecot/*.conf /etc/dovecot
 touch /var/log/imap 2> /dev/null
 chgrp _dovecot /usr/local/libexec/dovecot/dovecot-lda
 chmod 4750 /usr/local/libexec/dovecot/dovecot-lda
@@ -84,6 +84,8 @@ dovecot:\\
 
 EOF
 
+cp $DEFAULT/install/system/dovecot/quota-warning.sh /usr/local/bin
+chmod +x /usr/local/bin/quota-warning.sh
 /usr/sbin/rcctl start dovecot
 
 echo " -- Set newsyslog"
