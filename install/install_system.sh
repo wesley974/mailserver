@@ -15,6 +15,17 @@ fi
 DEFAULT=/var/mailserver
 PLUGINS=/var/www/roundcubemail/plugins
 
+echo " -- Tune system"
+/usr/sbin/sysctl kern.maxfiles=10000
+/usr/sbin/sysctl machdep.lidsuspend=0
+echo kern.maxfiles=10000 >> /etc/sysctl.conf
+echo machdep.lidsuspend=0 >> /etc/sysctl.conf
+
+cat /etc/login.conf | sed 's/:openfiles-cur=128/:openfiles-cur=1024/' > /tmp/login.conf.new
+mv /tmp/login.conf.new /etc/login.conf
+/usr/bin/cap_mkdb /etc/login.conf
+ulimit -n 1024
+
 echo " -- Create spamassassin's home"
 mkdir -p /var/db/spamassassin
 
@@ -128,13 +139,3 @@ echo " -- Set Packet Filter"
 (cd $DEFAULT/install/system && git clone https://github.com/wesley974/rmspams)
 chmod +x $DEFAULT/install/system/rmspams/install.sh
 (cd $DEFAULT/install/system/rmspams && $DEFAULT/install/system/rmspams/install.sh)
-
-echo " -- Tune system"
-/usr/sbin/sysctl kern.maxfiles=10000
-/usr/sbin/sysctl machdep.lidsuspend=0
-echo kern.maxfiles=10000 >> /etc/sysctl.conf
-echo machdep.lidsuspend=0 >> /etc/sysctl.conf
-
-cat /etc/login.conf | sed 's/:openfiles-cur=128/:openfiles-cur=1024/' > /tmp/login.conf.new
-mv /tmp/login.conf.new /etc/login.conf
-/usr/bin/cap_mkdb /etc/login.conf
