@@ -135,3 +135,5 @@ milter_header_checks = pcre:/etc/postfix/milter_header_checks
 header_checks = pcre:/etc/postfix/header_checks.pcre
 smtpd_milters =
   unix:/tmp/clamav-milter.sock
+smtputf8_enable = no
+compatibility_level = 2
