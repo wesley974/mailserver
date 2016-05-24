@@ -47,6 +47,7 @@ echo " -- Set Ntpd"
 echo " -- Set Spamassassin"
 install -m 644 $DEFAULT/install/system/spamassassin/* /etc/mail/spamassassin/local.cf
 /usr/sbin/rcctl enable spamassassin
+/usr/sbin/rcctl set spamassassin flags -s mail -u _spamdaemon -xq
 /usr/sbin/rcctl start spamassassin
 /usr/local/bin/sa-update -v
 echo "30      6       *       *       *       /usr/local/bin/sa-update -v" >> /var/cron/tabs/root
