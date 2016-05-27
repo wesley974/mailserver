@@ -45,7 +45,8 @@ echo " -- Set Ntpd"
 /usr/sbin/rcctl restart ntpd
 
 echo " -- Set Spamassassin"
-install -m 644 $DEFAULT/install/system/spamassassin/* /etc/mail/spamassassin/local.cf
+install -m 644 $DEFAULT/install/system/spamassassin/*.cf /etc/mail/spamassassin/local.cf
+install -m 755 $DEFAULT/install/system/spamassassin/spamfilter /usr/local/sbin/
 /usr/sbin/rcctl enable spamassassin
 /usr/sbin/rcctl set spamassassin flags -s mail -u _spamdaemon -xq
 /usr/sbin/rcctl start spamassassin

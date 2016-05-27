@@ -47,7 +47,7 @@ dovecot   unix  -       n       n       -       -       pipe
 
 spamassassin
           unix    -       n       n       -       -       pipe
-  flags=Rqhu user=_spamdaemon argv=/usr/local/bin/spamc -e /usr/sbin/sendmail -oi -f ${sender} ${recipient} ${user}@${domain}
+  flags=Rqhu user=_spamdaemon argv=/usr/local/sbin/spamfilter -oi -f ${sender} ${recipient} ${user}@${domain}
 
 #
 # Postfix master process configuration file.  Each line describes how
