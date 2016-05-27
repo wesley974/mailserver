@@ -62,7 +62,7 @@ $config['sauserprefs_dont_override'] = array();
 // these are overridden by $GLOBAL and user settings from the database
 $config['sauserprefs_default_prefs'] = array(
 									"required_score" => "5",
-									"rewrite_header Subject" => "*****SPAM*****",
+									"rewrite_header Subject" => "[SPAM _SCORE_]",
 									"ok_languages" => "all",
 									"ok_locales" => "all",
 									"fold_headers" => "1",
