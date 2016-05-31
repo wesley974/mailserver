@@ -375,7 +375,7 @@ $rcmail_config['email_dns_check'] = false;
 // ----------------------------------
 
 // List of active plugins (in plugins/ directory)
-$rcmail_config['plugins'] = array('messagesize', 'vcard_attachments', 'sauserprefs', 'password', 'contextmenu', 'emoticons', 'markasjunk2', 'sieverules');
+$rcmail_config['plugins'] = array('vcard_attachments', 'sauserprefs', 'password', 'contextmenu', 'emoticons', 'markasjunk2', 'sieverules');
 
 // ----------------------------------
 // USER INTERFACE
