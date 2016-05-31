@@ -13,6 +13,7 @@ if [ $(uname -r) != "5.9" ]; then
 fi
 
 DEFAULT=/var/mailserver
+PHPINI=/etc/php-5.6.ini
 
 echo " -- Create log and tmp folders"
 mkdir -p $DEFAULT/admin/{log,tmp}
@@ -77,6 +78,11 @@ ln -sf /usr/local/bin/php-5.6 /usr/local/bin/php
 echo "allow_url_fopen = On" >> /etc/php-5.6.ini
 echo "suhosin.session.encrypt = Off" >> /etc/php-5.6.ini
 install -m 644 $DEFAULT/install/gui/php-fpm.conf /etc
+cat $PHPINI | sed 's/post_max_size = 8M/post_max_size = 10M/' > /tmp/php.new
+install -m 644 /tmp/php.new $PHPINI
+cat $PHPINI | sed 's/upload_max_filesize = 2M/upload_max_filesize = 10M/' > /tmp/php.new
+install -m 644 /tmp/php.new $PHPINI
+rm /tmp/php.new
 /usr/sbin/rcctl enable php56_fpm
 /usr/sbin/rcctl start php56_fpm
 
