@@ -23,3 +23,6 @@ Execute the mailserver administration GUI and the domain admin app.
 
 ### sysmail.sh
 Send the system mail to the first administrator.
+
+### checksum_conf.sh
+Create SHA256 file, that contains the config files checksum.
