@@ -18,5 +18,6 @@ DEFAULT=/var/mailserver
  	/etc/newsyslog.conf \
 	/var/www/roundcubemail/config/db.inc.php \
 	/var/www/roundcubemail/config/main.inc.php \
+	/var/cron/tabs/root \
 	/etc/pf.conf \
 	/etc/rc.conf.local > $DEFAULT/install/SHA256
