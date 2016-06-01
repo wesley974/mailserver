@@ -26,3 +26,6 @@ Send the system mail to the first administrator.
 
 ### checksum_conf.sh
 Generate SHA256 file, that contains the config files checksum.
+
+### backup_conf.sh
+Backup files php-X.X.ini, login.conf, my.cnf, newsyslog.conf, rc.conf.local, sysctl.conf, and Root crontab

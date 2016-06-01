@@ -70,6 +70,10 @@ After an update (openup), check for modified config files :
 
     sha256 -c /var/mailserver/install/SHA256
 
+#### Security, backup config files
+	
+    /var/mailserver/install/backup_conf.sh
+
 #### The mailserver app
 
 https://ip_address:4200
