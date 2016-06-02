@@ -35,7 +35,7 @@ Includes:
     
 #### Install the GUI
 
-**Don't forget to tune your hosts file and verify your hostname!**
+>**Don't forget to tune your hosts file and verify your hostname!**
 
     cd /var/mailserver/install
     ./install_gui.sh
@@ -82,4 +82,4 @@ https://ip_address:4200
 
 https://ip_address
 
->>>*Enjoy!*
+>*Enjoy!*
