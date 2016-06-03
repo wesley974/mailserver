@@ -31,7 +31,7 @@ mkdir -p /var/db/spamassassin
 
 echo " -- Install packages"
 pkg_add roundcubemail clamav postfix-3.0.3p0-mysql p5-Mail-SpamAssassin \
-    dovecot-mysql dovecot-pigeonhole
+    dovecot-mysql dovecot-pigeonhole dkimproxy
 test_pkg
 
 echo " -- Stop and disable unwanted services"
@@ -72,6 +72,16 @@ fi
 /usr/sbin/rcctl start freshclam
 /usr/sbin/rcctl start clamd
 /usr/sbin/rcctl start clamav_milter
+
+echo " -- Set DKIM"
+/usr/sbin/rcctl enable dkimproxy_out
+mkdir -p /etc/ssl/dkim
+(cd /etc/ssl/dkim && openssl genrsa -out private.key 1024)
+(cd /etc/ssl/dkim && openssl rsa -in private.key -pubout -out public.key)
+chown -R _dkimproxy._dkimproxy /etc/ssl/dkim
+chmod -R 770 /etc/ssl/dkim
+install -m 644 $DEFAULT/install/system/dkim/dkimproxy_out.conf /etc
+/usr/sbin/rcctl start dkimproxy_out
 
 echo " -- Set Postfix"
 /usr/local/sbin/postfix-enable
