@@ -7,10 +7,12 @@ Includes:
 
 - postfix
 - dovecot
-- spamassasin
+- spamassasin 
 - clamav with automatic updates
 - packet filter
-- roundcube webmail
+- roundcube webmail (with sauserprefs plugin)
+- dkimproxy (sign out)
+- rmspams 
 
 *The admin and account apps forked from the free [mailserv project](https://github.com/mailserv/mailserv).
 
