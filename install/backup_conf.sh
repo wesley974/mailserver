@@ -9,3 +9,4 @@ cp /etc/sysctl.conf $BACKUP
 cp /etc/newsyslog.conf $BACKUP
 cp /var/cron/tabs/root $BACKUP
 cp /etc/rc.conf.local $BACKUP
+cp /etc/dkimproxy_out.conf $BACKUP

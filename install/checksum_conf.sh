@@ -10,6 +10,7 @@ DEFAULT=/var/mailserver
  	/etc/clamav-milter.conf \
 	/etc/clamd.conf \
 	/etc/freshclam.conf \
+	/etc/dkimproxy_out.conf \
  	/etc/postfix/header_checks.pcre \
 	/etc/postfix/master.cf \
 	/etc/postfix/main.cf \
