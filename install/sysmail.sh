@@ -1,7 +1,7 @@
 #!/bin/sh
 ALIASES=/etc/mail/aliases
 ROOT=/var/mailserver
-ADM=$(/usr/local/bin/mysql -u root < $ROOT/install/system/aliases/req.sql | grep -v ^email$)
+ADM=$(/usr/local/bin/mysql -u root < $ROOT/install/system/aliases/req_e.sql | grep -v ^email$)
 
 if [ -z "$ADM" ]; then
 	exit 1
