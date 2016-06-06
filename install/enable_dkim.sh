@@ -10,7 +10,7 @@ fi
 LIST=
 for i in $ADM
 do
-	if [ -z $LIST ]; then
+	if [ -z "$LIST" ]; then
 	LIST=$i
 	else
 	LIST=$LIST,$i
