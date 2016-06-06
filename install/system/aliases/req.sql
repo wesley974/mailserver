@@ -1,2 +1,2 @@
 use mail;
-select * from admins;
+select email from admins;
