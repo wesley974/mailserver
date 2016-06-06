@@ -1,5 +1,4 @@
 #!/bin/sh
-set -x
 DEFAULT=/var/mailserver
 DKIM=$DEFAULT/install/system/dkim/dkimproxy_out.conf
 ADM=$(/usr/local/bin/mysql -u root < $DEFAULT/install/system/domains/req_d.sql | grep -v ^name$)
