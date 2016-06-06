@@ -1,4 +1,5 @@
 #!/bin/sh
+set -x
 DEFAULT=/var/mailserver
 DKIM=$DEFAULT/install/system/dkim/dkimproxy_out.conf
 ADM=$(/usr/local/bin/mysql -u root < $DEFAULT/install/system/domains/req_d.sql | grep -v ^name$)
@@ -16,6 +17,8 @@ do
 	LIST=$LIST,$i
 	fi
 done
+echo "Your DKIM TXT Record :"
+cat /etc/ssl/dkim/public.key
 cat $DKIM | sed "s/^domain.*/domain    $LIST/" > /tmp/dkim.temp
 install -m 644 /tmp/dkim.temp /etc/dkimproxy_out.conf
 rm /tmp/dkim.temp
