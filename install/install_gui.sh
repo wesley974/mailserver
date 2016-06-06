@@ -47,10 +47,6 @@ ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
 
 echo " -- Set MariaDB-server"
 /usr/local/bin/mysql_install_db > /dev/null 2>&1
-mv /etc/my.cnf /etc/examples/
-sed '/\[mysqld\]/ a\
-    bind-address    = 127.0.0.1
-    ' /etc/examples/my.cnf > /etc/my.cnf
 
 cat <<EOF>>/etc/login.conf
 
