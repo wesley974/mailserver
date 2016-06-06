@@ -39,15 +39,13 @@ Includes:
 
 >**Don't forget to tune your hosts file and verify your hostname!**
 
-    cd /var/mailserver/install
-    ./install_gui.sh
-    ./build_db.sh
+    /var/mailserver/install/install_gui.sh
+    /var/mailserver/install/build_db.sh
 
 #### Install the mail system
 
-    cd /var/mailserver/install
-    ./install_system.sh 
-    ./enable_admin_rc.sh
+    /var/mailserver/install/install_system.sh 
+    /var/mailserver/install/enable_admin_rc.sh
 
 ## USAGE
 
@@ -65,8 +63,7 @@ Then set the email for root messages :
 
 #### Security, generate checksum (SHA256) for the config files
 
-    cd /var/mailserver/install
-    ./checksum_conf.sh
+    /var/mailserver/install/checksum_conf.sh
     
 After an update (openup), check for modified config files :
 
