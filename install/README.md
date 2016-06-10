@@ -10,7 +10,7 @@
 >Install the mailserver administration GUI and the domain admin app.
 
 ### install_system.sh
->Install the system (postfix, dovecot, clamav, spamassassin, roundcube).
+>Install the system (postfix, dovecot, dkimproxy, clamav, spamassassin, roundcube).
 
 ### kill_gui.sh
 >Stop the mailserver administration GUI and the domain admin app.
