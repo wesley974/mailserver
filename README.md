@@ -63,6 +63,10 @@ Then set the email for root messages :
 
     /var/mailserver/install/sysmail.sh
 
+#### Security, backup config files
+	
+    /var/mailserver/install/backup_conf.sh
+
 #### Security, generate checksum (SHA256) for the config files
 
     /var/mailserver/install/checksum_conf.sh
@@ -71,16 +75,12 @@ After an update (openup), check for modified config files :
 
     sha256 -c /var/mailserver/install/SHA256
 
-#### Security, backup config files
-	
-    /var/mailserver/install/backup_conf.sh
-
 #### The mailserver app
 
-https://ip_address:4200
+Just browse https://ip_address:4200
 
 #### Your webmail
 
-https://ip_address
+Just browse https://ip_address
 
 >*Enjoy!*
