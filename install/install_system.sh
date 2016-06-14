@@ -51,7 +51,7 @@ install -m 755 $DEFAULT/install/system/spamassassin/spamfilter /usr/local/sbin/
 /usr/sbin/rcctl set spamassassin flags -s mail -u _spamdaemon -xq
 /usr/sbin/rcctl start spamassassin
 /usr/local/bin/sa-update -v
-echo "30      6       *       *       *       /usr/local/bin/sa-update -v" >> /var/cron/tabs/root
+echo "30      6       *       *       *       /usr/local/bin/sa-update -v && /usr/sbin/rcctl reload spamassassin" >> /var/cron/tabs/root
 
 echo " -- Set ClamAV"
 install -m 644 $DEFAULT/install/system/clamav/*clam* /etc 2> /dev/null
