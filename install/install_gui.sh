@@ -120,3 +120,4 @@ echo " -- Create spamcontrol database"
 
 echo " -- Link kill_gui.sh to /etc/rc.shutdown"
 ln -sf /var/mailserver/install/kill_gui.sh /etc/rc.shutdown
+chmod 644 /etc/rc.shutdown
