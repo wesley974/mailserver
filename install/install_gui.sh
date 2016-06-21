@@ -118,5 +118,5 @@ install -m 644 $DEFAULT/install/gui/nginx.conf /etc/nginx/
 echo " -- Create spamcontrol database"
 /usr/local/bin/mysql < $DEFAULT/install/gui/spamcontrol.sql
 
-echo " -- Link kill_gui.sh to /etc/rc.shutdown"
-ln -sf /var/mailserver/install/kill_gui.sh /etc/rc.shutdown
+echo " -- Create /etc/rc.shutdown"
+install -m 644 $DEFAULT/install/kill_gui.sh /etc/rc.shutdown
