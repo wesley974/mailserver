@@ -7,7 +7,7 @@ Includes:
 
 - postfix
 - dovecot
-- spamassasin 
+- spamassasin with automatic updates
 - clamav with automatic updates
 - packet filter
 - roundcube webmail (with sauserprefs plugin)
