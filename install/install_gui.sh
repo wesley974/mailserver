@@ -83,13 +83,12 @@ rm /tmp/php.new
 /usr/sbin/rcctl start php56_fpm
 
 echo " -- Set certificates"
-/usr/bin/openssl genrsa -out /etc/ssl/private/server.key 2048 2>/dev/null
-/usr/bin/openssl req -new -key /etc/ssl/private/server.key \
-    -out /tmp/server.csr -subj "/CN=`hostname`" 2>/dev/null
-/usr/bin/openssl x509 -req -days 1095 -in /tmp/server.csr \
-    -signkey /etc/ssl/private/server.key -out /etc/ssl/server.crt 2>/dev/null
-rm -f /tmp/server.csr
-
+/usr/bin/openssl genrsa -out /etc/ssl/private/mailserver.key 2048 2>/dev/null
+/usr/bin/openssl req -new -key /etc/ssl/private/mailserver.key \
+    -out /tmp/mailserver.csr -subj "/CN=`hostname`" 2>/dev/null
+/usr/bin/openssl x509 -req -days 1095 -in /tmp/mailserver.csr \
+    -signkey /etc/ssl/private/mailserver.key -out /etc/ssl/mailserver.crt 2>/dev/null
+rm -f /tmp/mailserver.csr
 
 echo " -- Set Ruby env."
 ln -sf /usr/local/bin/ruby18 /usr/local/bin/ruby

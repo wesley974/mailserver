@@ -119,10 +119,10 @@ smtpd_data_restrictions = reject_unauth_pipelining
 #
 smtpd_use_tls = yes
 smtpd_tls_auth_only = yes
-smtp_tls_cert_file = /etc/ssl/server.crt
-smtp_tls_key_file = /etc/ssl/private/server.key
-smtpd_tls_cert_file = /etc/ssl/server.crt
-smtpd_tls_key_file = /etc/ssl/private/server.key
+smtp_tls_cert_file = /etc/ssl/mailserver.crt
+smtp_tls_key_file = /etc/ssl/private/mailserver.key
+smtpd_tls_cert_file = /etc/ssl/mailserver.crt
+smtpd_tls_key_file = /etc/ssl/private/mailserver.key
 smtpd_tls_security_level = may
 smtp_tls_security_level = may
 smtpd_tls_received_header = yes
