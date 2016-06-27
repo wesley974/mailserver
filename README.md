@@ -1,4 +1,4 @@
-# OpenBSD Mailserver
+# OpenBSD Mailserver for production
 
 A full mailserver with an admin GUI and a domain admin GUI.
 This works on OpenBSD 5.9.
