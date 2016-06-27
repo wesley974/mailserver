@@ -76,7 +76,7 @@ fi
 echo " -- Set DKIM"
 /usr/sbin/rcctl enable dkimproxy_out
 mkdir -p /etc/ssl/dkim
-(cd /etc/ssl/dkim && openssl genrsa -out private.key 1024)
+(cd /etc/ssl/dkim && openssl genrsa -out private.key 2048)
 (cd /etc/ssl/dkim && openssl rsa -in private.key -pubout -out public.key)
 chown -R _dkimproxy._dkimproxy /etc/ssl/dkim
 chmod -R 770 /etc/ssl/dkim
