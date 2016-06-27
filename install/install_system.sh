@@ -30,6 +30,7 @@ echo " -- Create spamassassin's home"
 mkdir -p /var/db/spamassassin
 
 echo " -- Install packages"
+export PKG_PATH=http://ftp2.fr.openbsd.org/pub/OpenBSD/5.9/packages/$(machine)/
 pkg_add roundcubemail clamav postfix-3.0.3p0-mysql p5-Mail-SpamAssassin \
     dovecot-mysql dovecot-pigeonhole dkimproxy
 test_pkg
