@@ -20,6 +20,8 @@ You get access to the account app via Roundcube (admin button).
 
 ## Installation
 
+>**From a fresh OpenBSD install...**
+
 #### Get git
 
     export PKG_PATH=http://ftp2.fr.openbsd.org/pub/OpenBSD/5.9/packages/$(machine)/
