@@ -12,6 +12,12 @@ if [ $(uname -r) != "5.9" ]; then
         exit 1
 fi
 
+case "$1" in
+        "") DKIM_VALUE=1024;;
+        -max) DKIM_VALUE=2048;;
+        *) exit 1;;
+esac
+
 DEFAULT=/var/mailserver
 PLUGINS=/var/www/roundcubemail/plugins
 
@@ -74,10 +80,10 @@ fi
 /usr/sbin/rcctl start clamd
 /usr/sbin/rcctl start clamav_milter
 
-echo " -- Set DKIM"
+echo " -- Set DKIM ($DKIM_VALUE)"
 /usr/sbin/rcctl enable dkimproxy_out
 mkdir -p /etc/ssl/dkim
-(cd /etc/ssl/dkim && openssl genrsa -out private.key 1024)
+(cd /etc/ssl/dkim && openssl genrsa -out private.key $DKIM_VALUE)
 (cd /etc/ssl/dkim && openssl rsa -in private.key -pubout -out public.key)
 chown -R _dkimproxy._dkimproxy /etc/ssl/dkim
 chmod -R 770 /etc/ssl/dkim

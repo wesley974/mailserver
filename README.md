@@ -48,6 +48,8 @@ You get access to the account app via Roundcube (admin button).
 
 #### Install the mail system
 
+By defaut, a 1024 domain key will be generated, if you wish to generate a 2048 domain key, use '/var/mailserver/install/install_system.sh -max' 
+
     /var/mailserver/install/install_system.sh 
     /var/mailserver/install/enable_admin_rc.sh
 
