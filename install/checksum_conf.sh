@@ -25,4 +25,10 @@ DEFAULT=/var/mailserver
 	/etc/spwd.db \
 	/var/cron/tabs/root \
 	/etc/pf.conf \
+	/etc/rc.shutdown \
+	/etc/myname \
+	/etc/mygate \
+	/etc/resolv.conf \
+	/etc/hostname.* \
+	/etc/hosts \
 	/etc/rc.conf.local > $DEFAULT/install/SHA256

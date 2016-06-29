@@ -15,3 +15,9 @@ cp /etc/newsyslog.conf $BACKUP
 cp /var/cron/tabs/root $BACKUP
 cp /etc/rc.conf.local $BACKUP
 cp /etc/rc.shutdown $BACKUP
+cp /etc/hostname.* $BACKUP
+cp /etc/hosts $BACKUP
+cp /etc/myname $BACKUP
+cp /etc/mygate $BACKUP
+cp /etc/resolv.conf $BACKUP
+cp /etc/pf.conf $BACKUP
