@@ -1,21 +1,28 @@
 #!/bin/sh
 
+_err() {
+echo "!!! ${@}"
+exit 1
+}
+
 function test_pkg {
 if [ "$?" == 1 ]; then
-    echo "Error"
-    exit 1
+	_err "install package error"
 fi
 }
 
 if [ $(uname -r) != "5.9" ]; then
-        echo "This only works on OpenBSD 5.9"
-        exit 1
+	_err "this only support OpenBSD 5.9"
+fi
+
+if [ $# -gt 1 ]; then
+        _err "support only one argument (-max)"
 fi
 
 case "$1" in
         "") DKIM_VALUE=1024;;
         -max) DKIM_VALUE=2048;;
-        *) exit 1;;
+        *) _err "support only one argument (-max)";;
 esac
 
 DEFAULT=/var/mailserver
