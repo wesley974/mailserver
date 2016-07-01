@@ -10,7 +10,7 @@ exit 1
 /usr/local/bin/mysql -e "grant all privileges on mail.* to 'mailadmin'@'localhost' identified by 'mailadmin';"
 
 /usr/local/bin/mysql -e "show databases;" | grep mail > /dev/null 2>&1
-if [ $? = 0 ]; then
+if [ $? == 0 ]; then
 	_err "mail database already exist"
 fi
 
