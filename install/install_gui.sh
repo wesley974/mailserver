@@ -1,10 +1,8 @@
 #!/bin/sh
 
-function test_pkg {
-if [ "$?" == 1 ]; then
-    echo "Error"
-    exit 1
-fi
+_err() {
+echo "!!! ${@}"
+exit 1
 }
 
 if [ $(uname -r) != "5.9" ]; then
@@ -33,12 +31,14 @@ echo " -- Create mail folder"
 mkdir -p $DEFAULT/mail
 
 echo " -- Install packages"
-export PKG_PATH=http://ftp2.fr.openbsd.org/pub/OpenBSD/5.9/packages/$(machine)/
+export PKG_PATH=http://ftp.openbsd.org/pub/OpenBSD/5.9/packages/$(machine)/
 pkg_add ImageMagick mariadb-server php-mysql-5.6.18 php-pdo_mysql-5.6.18 \
     php-intl-5.6.18 php-zip-5.6.18 xcache gtar-1.28p1 nginx-1.9.10 node \
     php-pspell-5.6.18 ruby-1.8.7.374p5 ruby-gems-1.8.24 ruby-iconv-1.8.7.374 \
     ruby-mysql-2.9.1p0 ruby-rake-0.9.2.2p0 php-mcrypt-5.6.18
-test_pkg
+if [ "$?" == 1 ]; then
+	_err "install package error"
+fi
 
 echo " -- Link Python"
 ln -sf /usr/local/bin/python2.7 /usr/local/bin/python
