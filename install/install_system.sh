@@ -5,12 +5,6 @@ echo "!!! ${@}"
 exit 1
 }
 
-function test_pkg {
-if [ "$?" == 1 ]; then
-	_err "install package error"
-fi
-}
-
 if [ $(uname -r) != "5.9" ]; then
 	_err "this only support OpenBSD 5.9"
 fi
@@ -43,10 +37,12 @@ echo " -- Create spamassassin's home"
 mkdir -p /var/db/spamassassin
 
 echo " -- Install packages"
-export PKG_PATH=http://ftp2.fr.openbsd.org/pub/OpenBSD/5.9/packages/$(machine)/
+export PKG_PATH=http://ftp.openbsd.org/pub/OpenBSD/5.9/packages/$(machine)/
 pkg_add roundcubemail clamav postfix-3.0.3p0-mysql p5-Mail-SpamAssassin \
     dovecot-mysql dovecot-pigeonhole dkimproxy
-test_pkg
+if [ "$?" == 1 ]; then
+	_err "install package error"
+fi
 
 echo " -- Stop and disable unwanted services"
 /usr/sbin/rcctl stop smtpd
