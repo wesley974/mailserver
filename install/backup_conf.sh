@@ -5,7 +5,7 @@ mkdir -p $BACKUP
 cp /etc/hostname.* $BACKUP
 cp /etc/hosts $BACKUP
 cp /etc/myname $BACKUP
-cp /etc/mygate $BACKUP
+cp /etc/mygate $BACKUP 2> /dev/null
 cp /etc/resolv.conf $BACKUP
 cp /etc/group $BACKUP
 cp /etc/passwd $BACKUP
