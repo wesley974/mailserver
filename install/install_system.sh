@@ -6,7 +6,7 @@ exit 1
 }
 
 if [ $(uname -r) != "5.9" ]; then
-	_err "this only support OpenBSD 5.9"
+	_err "support only OpenBSD 5.9"
 fi
 
 if [ $# -gt 1 ]; then
