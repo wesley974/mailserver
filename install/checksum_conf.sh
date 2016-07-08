@@ -1,8 +1,13 @@
 #!/bin/sh
 DEFAULT=/var/mailserver
 
+if [ -f $DEFAULT/install/SHA256 ]; then
+	rm -f $DEFAULT/install/SHA256
+fi
+
+
 if [ -f /etc/mygate ]; then
-/bin/sha256 /etc/mygate > $DEFAULT/install/SHA256
+	/bin/sha256 /etc/mygate > $DEFAULT/install/SHA256
 fi
 
 /bin/sha256 /etc/hostname.* \
@@ -35,6 +40,5 @@ fi
 	/etc/postfix/main.cf \
 	/etc/postfix/milter_header_checks \
 	/etc/dovecot/dovecot.conf \
-	/var/www/roundcubemail/config/db.inc.php \
-	/var/www/roundcubemail/config/main.inc.php \
+	/var/www/roundcubemail/config/config.inc.php \
 	>> $DEFAULT/install/SHA256

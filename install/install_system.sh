@@ -20,7 +20,7 @@ case "$1" in
 esac
 
 DEFAULT=/var/mailserver
-PLUGINS=/var/www/roundcubemail/plugins
+RDC=/var/www/roundcubemail
 
 echo " -- Tune system"
 /usr/sbin/sysctl kern.maxfiles=10000
@@ -135,29 +135,29 @@ EOF
 
 echo " -- Set Roundcube"
 /usr/local/bin/mysqladmin create webmail
-/usr/local/bin/mysql webmail < /var/www/roundcubemail/SQL/mysql.initial.sql
+/usr/local/bin/mysql webmail < $RDC/SQL/mysql.initial.sql
 /usr/local/bin/mysql webmail -e "grant all privileges on webmail.* to 'webmail'@'localhost' identified by 'webmail'"
-(cd /var/www/roundcubemail;ftp http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types && chown www.www mime.types)
-rm /var/www/roundcubemail/config/config.inc.php
-cp $DEFAULT/install/system/roundcube/*.php /var/www/roundcubemail/config
+(cd $RDC;ftp http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types && chown www.www mime.types)
+mv $RDC/config/config.inc.php $RDC/config/config.inc.php.backup
+cp $DEFAULT/install/system/roundcube/*.php $RDC/config
 
 echo " -- Set Roundcube sa plugin"
-(cd $PLUGINS && git clone https://github.com/JohnDoh/Roundcube-Plugin-SpamAssassin-User-Prefs-SQL.git sauserprefs)
-(cd $PLUGINS/sauserprefs && cp $DEFAULT/install/system/roundcube/plugins/sauserprefs/config.inc.php .)
+(cd $RDC/plugins && git clone https://github.com/JohnDoh/Roundcube-Plugin-SpamAssassin-User-Prefs-SQL.git sauserprefs)
+(cd $RDC/plugins/sauserprefs && cp $DEFAULT/install/system/roundcube/plugins/sauserprefs/config.inc.php .)
 
 echo " -- Set Roundcube password plugin"
-(cd $PLUGINS/password && cp $DEFAULT/install/system/roundcube/plugins/password/config.inc.php .)
+(cd $RDC/plugins/password && cp $DEFAULT/install/system/roundcube/plugins/password/config.inc.php .)
 
 echo " -- Set Roundcube markasjunk plugin"
-(cd $PLUGINS && git clone https://github.com/JohnDoh/Roundcube-Plugin-Mark-as-Junk-2.git markasjunk2)
-(cd $PLUGINS/markasjunk2 && cp $DEFAULT/install/system/roundcube/plugins/markasjunk2/config.inc.php .)
+(cd $RDC/plugins && git clone https://github.com/JohnDoh/Roundcube-Plugin-Mark-as-Junk-2.git markasjunk2)
+(cd $RDC/plugins/markasjunk2 && cp $DEFAULT/install/system/roundcube/plugins/markasjunk2/config.inc.php .)
 
 echo " -- Set Roundcube sieverules plugin"
-(cd $PLUGINS && git clone https://github.com/JohnDoh/Roundcube-Plugin-SieveRules-Managesieve.git sieverules)
-(cd $PLUGINS/sieverules && cp $DEFAULT/install/system/roundcube/plugins/sieverules/config.inc.php .)
+(cd $RDC/plugins && git clone https://github.com/JohnDoh/Roundcube-Plugin-SieveRules-Managesieve.git sieverules)
+(cd $RDC/plugins/sieverules && cp $DEFAULT/install/system/roundcube/plugins/sieverules/config.inc.php .)
 
 echo " -- Set Roundcube contextmenu plugin"
-(cd $PLUGINS && git clone https://github.com/JohnDoh/Roundcube-Plugin-Context-Menu.git contextmenu)
+(cd $RDC/plugins && git clone https://github.com/JohnDoh/Roundcube-Plugin-Context-Menu.git contextmenu)
 
 echo " -- Set Packet Filter"
 (cd $DEFAULT/install/system && git clone https://github.com/wesley974/rmspams)
