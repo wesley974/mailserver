@@ -12,7 +12,8 @@ Includes:
 - packet filter
 - roundcube webmail (with sauserprefs plugin)
 - dkimproxy (sign out)
-- rmspams 
+- rmspams
+- a fully responsive theme for mobile devices (auto switch)
 
 *The admin and account apps forked from the free [mailserv project](https://github.com/mailserv/mailserv).
 
