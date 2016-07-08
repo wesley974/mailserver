@@ -98,7 +98,7 @@ $config['mime_magic'] = '/usr/share/misc/magic';
 // PLUGINS
 // ----------------------------------
 // List of active plugins (in plugins/ directory)
-$config['plugins'] = array('vcard_attachments', 'sauserprefs', 'password', 'contextmenu', 'emoticons', 'markasjunk2', 'sieverules');
+$config['plugins'] = array('vcard_attachments', 'sauserprefs', 'password', 'contextmenu', 'emoticons', 'markasjunk2', 'sieverules', 'mobile');
 
 // give this choice of date formats to the user to select from
 $config['date_formats'] = array('Y-m-d', 'd-m-Y', 'Y/m/d', 'm/d/Y', 'd/m/Y', 'd.m.Y', 'j.n.Y');

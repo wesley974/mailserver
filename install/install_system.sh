@@ -159,6 +159,12 @@ echo " -- Set Roundcube sieverules plugin"
 echo " -- Set Roundcube contextmenu plugin"
 (cd $RDC/plugins && git clone https://github.com/JohnDoh/Roundcube-Plugin-Context-Menu.git contextmenu)
 
+echo " -- Set Roundcube Mobile"
+(cd $RDC/plugins && git clone https://github.com/messagerie-melanie2/Roundcube-Plugin-Mobile mobile)
+(cd $RDC/plugins && git clone https://github.com/messagerie-melanie2/Roundcube-Plugin-JQuery-Mobile)
+(cd $RDC/plugins && ftp https://getcomposer.org/download/1.1.2/composer.phar)
+(cd $RDC/plugins && /usr/local/bin/php composer.phar require melanie2/mobile:dev-master)
+
 echo " -- Set Packet Filter"
 (cd $DEFAULT/install/system && git clone https://github.com/wesley974/rmspams)
 chmod +x $DEFAULT/install/system/rmspams/install.sh
