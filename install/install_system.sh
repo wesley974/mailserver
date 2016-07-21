@@ -142,26 +142,27 @@ mv $RDC/config/config.inc.php $RDC/config/config.inc.php.backup
 cp $DEFAULT/install/system/roundcube/*.php $RDC/config
 
 echo " -- Set Roundcube sa plugin"
-(cd $RDC/plugins && git clone https://github.com/JohnDoh/Roundcube-Plugin-SpamAssassin-User-Prefs-SQL.git sauserprefs)
+(cd $RDC/plugins && git clone https://github.com/JohnDoh/Roundcube-Plugin-SpamAssassin-User-Prefs-SQL sauserprefs)
 (cd $RDC/plugins/sauserprefs && cp $DEFAULT/install/system/roundcube/plugins/sauserprefs/config.inc.php .)
 
 echo " -- Set Roundcube password plugin"
 (cd $RDC/plugins/password && cp $DEFAULT/install/system/roundcube/plugins/password/config.inc.php .)
 
 echo " -- Set Roundcube markasjunk plugin"
-(cd $RDC/plugins && git clone https://github.com/JohnDoh/Roundcube-Plugin-Mark-as-Junk-2.git markasjunk2)
+(cd $RDC/plugins && git clone https://github.com/JohnDoh/Roundcube-Plugin-Mark-as-Junk-2 markasjunk2)
 (cd $RDC/plugins/markasjunk2 && cp $DEFAULT/install/system/roundcube/plugins/markasjunk2/config.inc.php .)
 
 echo " -- Set Roundcube sieverules plugin"
-(cd $RDC/plugins && git clone https://github.com/JohnDoh/Roundcube-Plugin-SieveRules-Managesieve.git sieverules)
+(cd $RDC/plugins && git clone https://github.com/JohnDoh/Roundcube-Plugin-SieveRules-Managesieve sieverules)
 (cd $RDC/plugins/sieverules && cp $DEFAULT/install/system/roundcube/plugins/sieverules/config.inc.php .)
 
 echo " -- Set Roundcube contextmenu plugin"
-(cd $RDC/plugins && git clone https://github.com/JohnDoh/Roundcube-Plugin-Context-Menu.git contextmenu)
+(cd $RDC/plugins && git clone https://github.com/JohnDoh/Roundcube-Plugin-Context-Menu contextmenu)
 
 echo " -- Set Roundcube Mobile"
+(cd $RDC/skins && git clone https://github.com/messagerie-melanie2/Roundcube-Skin-Melanie2-Larry-Mobile)
 (cd $RDC/plugins && git clone https://github.com/messagerie-melanie2/Roundcube-Plugin-Mobile mobile)
-(cd $RDC/plugins && git clone https://github.com/messagerie-melanie2/Roundcube-Plugin-JQuery-Mobile)
+(cd $RDC/plugins && git clone https://github.com/messagerie-melanie2/Roundcube-Plugin-JQuery-Mobile jquery_mobile)
 (cd $RDC/plugins && ftp https://getcomposer.org/download/1.1.2/composer.phar)
 (cd $RDC/plugins && /usr/local/bin/php composer.phar require melanie2/mobile:dev-master)
 
