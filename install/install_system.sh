@@ -147,7 +147,7 @@ echo " -- Set Roundcube"
 /usr/local/bin/mysql webmail < $_RDC/SQL/mysql.initial.sql
 /usr/local/bin/mysql webmail -e "grant all privileges on webmail.* to 'webmail'@'localhost' identified by 'webmail'"
 (cd $_RDC;ftp http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types && chown www.www mime.types)
-mv $_RDC/config/config.inc.php $RDC/config/config.inc.php.backup
+mv $_RDC/config/config.inc.php $_RDC/config/config.inc.php.backup
 cp $_DEFAULT/install/system/roundcube/*.php $_RDC/config
 
 echo " -- Set Roundcube sa plugin"
@@ -178,6 +178,6 @@ echo " -- Set Roundcube Mobile"
 echo " -- Set Packet Filter"
 (cd $_DEFAULT/install/system && git clone https://github.com/wesley974/rmspams)
 chmod +x $_DEFAULT/install/system/rmspams/install.sh
-(cd $_DEFAULT/install/system/rmspams && $DEFAULT/install/system/rmspams/install.sh)
+(cd $_DEFAULT/install/system/rmspams && $_DEFAULT/install/system/rmspams/install.sh)
 
 rm -rf $_TMPDIR
