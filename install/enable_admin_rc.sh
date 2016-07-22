@@ -1,23 +1,25 @@
 #!/bin/sh
-LARRY=/var/www/roundcubemail/skins/larry/includes/header.html
-CLASSIC=/var/www/roundcubemail/skins/classic/includes/taskbar.html
+_LARRY=/var/www/roundcubemail/skins/larry/includes/header.html
+_CLASSIC=/var/www/roundcubemail/skins/classic/includes/taskbar.html
+_TMP="${TMPDIR:=/tmp}"
+_TMPDIR=$(mktemp -dp ${_TMP} .install-XXXXXXXXXX) || exit 1
 
-grep Admin $LARRY > /dev/null 2>&1
+grep Admin $_LARRY > /dev/null 2>&1
 
 if [ "$?" == 1 ]; then
-cp $LARRY /tmp
+cp $_LARRY $_TMPDIR
 sed '/\<div id="taskbar"/a \
 <a href=\"../../../account/auth/autologin?id=<roundcube:var name='request:roundcube_sessid' />\">Admin</a>
-' /tmp/header.html > $LARRY
-rm /tmp/header.html
+' $_TMPDIR/header.html > $_LARRY
 fi
 
-grep Admin $CLASSIC > /dev/null 2>&1
+grep Admin $_CLASSIC > /dev/null 2>&1
 
 if [ "$?" == 1 ]; then
-cp $CLASSIC /tmp
+cp $_CLASSIC $_TMPDIR
 sed '/\<div id="taskbar"/a \
 <a href=\"../../../account/auth/autologin?id=<roundcube:var name='request:roundcube_sessid' />\">Admin</a> 
-' /tmp/taskbar.html > $CLASSIC
-rm /tmp/taskbar.html
+' $_TMPDIR/taskbar.html > $_CLASSIC
 fi
+
+rm -rf $_TMPDIR

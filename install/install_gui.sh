@@ -5,30 +5,37 @@ echo "!!! ${@}"
 exit 1
 }
 
+bye_bye() {
+        rm -rf ${_TMPDIR}
+        exit 1
+}
+
 if [ $(uname -r) != "5.9" ]; then
 	echo "This only works on OpenBSD 5.9"
 	exit 1
 fi
 
-DEFAULT=/var/mailserver
-PHPINI=/etc/php-5.6.ini
+_DEFAULT=/var/mailserver
+_PHPINI=/etc/php-5.6.ini
+_TMP="${TMPDIR:=/tmp}"
+_TMPDIR=$(mktemp -dp ${_TMP} .install-XXXXXXXXXX) || exit 1
 
 echo " -- Create log and tmp folders"
-mkdir -p $DEFAULT/admin/{log,tmp}
-mkdir -p $DEFAULT/account/{log,tmp}
+mkdir -p $_DEFAULT/admin/{log,tmp}
+mkdir -p $_DEFAULT/account/{log,tmp}
 
 echo " -- Remove old staff"
-rm -rf $DEFAULT/admin/{tmp,log}/*
-rm -rf $DEFAULT/account/{tmp,log}/*
+rm -rf $_DEFAULT/admin/{tmp,log}/*
+rm -rf $_DEFAULT/account/{tmp,log}/*
 
 echo " -- Set permissions"
-chmod -R 755 $DEFAULT/{admin,account}
-chmod -R 777 $DEFAULT/admin/{tmp,log}
-chmod -R 777 $DEFAULT/account/{tmp,log}
-chmod 755 $DEFAULT/install/*.sh
+chmod -R 755 $_DEFAULT/{admin,account}
+chmod -R 777 $_DEFAULT/admin/{tmp,log}
+chmod -R 777 $_DEFAULT/account/{tmp,log}
+chmod 755 $_DEFAULT/install/*.sh
 
 echo " -- Create mail folder"
-mkdir -p $DEFAULT/mail
+mkdir -p $_DEFAULT/mail
 
 echo " -- Install packages"
 export PKG_PATH=http://ftp.openbsd.org/pub/OpenBSD/5.9/packages/$(machine)/
@@ -74,22 +81,21 @@ ln -sf /etc/php-5.6.sample/zip.ini /etc/php-5.6/zip.ini
 ln -sf /usr/local/bin/php-5.6 /usr/local/bin/php
 echo "allow_url_fopen = On" >> /etc/php-5.6.ini
 echo "suhosin.session.encrypt = Off" >> /etc/php-5.6.ini
-install -m 644 $DEFAULT/install/gui/php-fpm.conf /etc
-cat $PHPINI | sed 's/post_max_size = 8M/post_max_size = 10M/' > /tmp/php.new
-install -m 644 /tmp/php.new $PHPINI
-cat $PHPINI | sed 's/upload_max_filesize = 2M/upload_max_filesize = 10M/' > /tmp/php.new
-install -m 644 /tmp/php.new $PHPINI
-rm /tmp/php.new
+install -m 644 $_DEFAULT/install/gui/php-fpm.conf /etc
+cat $_PHPINI | sed 's/post_max_size = 8M/post_max_size = 10M/' > $_TMPDIR/php.new
+trap "bye_bye" 1 2 3 13 15
+install -m 644 $_TMPDIR/php.new $_PHPINI
+cat $_PHPINI | sed 's/upload_max_filesize = 2M/upload_max_filesize = 10M/' > $_TMPDIR/php.new2
+install -m 644 $_TMPDIR/php.new2 $_PHPINI
 /usr/sbin/rcctl enable php56_fpm
 /usr/sbin/rcctl start php56_fpm
 
 echo " -- Set certificates"
 /usr/bin/openssl genrsa -out /etc/ssl/private/mailserver.key 2048 2>/dev/null
 /usr/bin/openssl req -new -key /etc/ssl/private/mailserver.key \
-    -out /tmp/mailserver.csr -subj "/CN=`hostname`" 2>/dev/null
-/usr/bin/openssl x509 -req -days 1095 -in /tmp/mailserver.csr \
+    -out $_TMPDIR/mailserver.csr -subj "/CN=`hostname`" 2>/dev/null
+/usr/bin/openssl x509 -req -days 1095 -in $_TMPDIR/mailserver.csr \
     -signkey /etc/ssl/private/mailserver.key -out /etc/ssl/mailserver.crt 2>/dev/null
-rm -f /tmp/mailserver.csr
 
 echo " -- Set Ruby env."
 ln -sf /usr/local/bin/ruby18 /usr/local/bin/ruby
@@ -110,13 +116,15 @@ ln -sf /usr/local/bin/rails18 /usr/local/bin/rails
 ln -sf /usr/local/bin/mongrel_rails18 /usr/local/bin/mongrel_rails
 
 echo " -- Set Nginx"
-install -m 644 $DEFAULT/install/gui/nginx.conf /etc/nginx/
+install -m 644 $_DEFAULT/install/gui/nginx.conf /etc/nginx/
 /usr/sbin/rcctl enable nginx
 /usr/sbin/rcctl set nginx flags -u
 /usr/sbin/rcctl start nginx
 
 echo " -- Create spamcontrol database"
-/usr/local/bin/mysql < $DEFAULT/install/gui/spamcontrol.sql
+/usr/local/bin/mysql < $_DEFAULT/install/gui/spamcontrol.sql
 
 echo " -- Create /etc/rc.shutdown"
-install -m 644 $DEFAULT/install/kill_gui.sh /etc/rc.shutdown
+install -m 644 $_DEFAULT/install/kill_gui.sh /etc/rc.shutdown
+
+rm -rf ${_TMPDIR}
