@@ -12,7 +12,7 @@ bye_bye() {
 
 _DEFAULT=/var/mailserver
 _RDC=/var/www/roundcubemail
-_TMP="${TMPDIR:=$_TMPDIR}"
+_TMP="${TMPDIR:=/tmp}"
 _TMPDIR=$(mktemp -dp ${_TMP} .install-XXXXXXXXXX) || exit 1
 
 trap "bye_bye" 1 2 3 13 15
