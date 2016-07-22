@@ -169,7 +169,7 @@ echo " -- Set Roundcube contextmenu plugin"
 (cd $_RDC/plugins && git clone https://github.com/JohnDoh/Roundcube-Plugin-Context-Menu contextmenu)
 
 echo " -- Set Roundcube Mobile"
-(cd $_RDC/skins && git clone https://github.com/messagerie-melanie2/Roundcube-Skin-Melanie2-Larry-Mobile)
+(cd $_RDC/skins && git clone https://github.com/messagerie-melanie2/Roundcube-Skin-Melanie2-Larry-Mobile melanie2_larry_mobile)
 (cd $_RDC/plugins && git clone https://github.com/messagerie-melanie2/Roundcube-Plugin-Mobile mobile)
 (cd $_RDC/plugins && git clone https://github.com/messagerie-melanie2/Roundcube-Plugin-JQuery-Mobile jquery_mobile)
 (cd $_RDC/plugins && ftp https://getcomposer.org/download/1.1.2/composer.phar)
