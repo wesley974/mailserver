@@ -1,10 +1,5 @@
 #!/bin/sh
 
-_DEFAULT=/var/mailserver
-_RDC=/var/www/roundcubemail
-_TMP="${TMPDIR:=$_TMPDIR}"
-_TMPDIR=$(mktemp -dp ${_TMP} .install-XXXXXXXXXX) || exit 1
-
 _err() {
 echo "!!! ${@}"
 exit 1
@@ -14,6 +9,11 @@ bye_bye() {
         rm -rf ${_TMPDIR}
         exit 1
 }
+
+_DEFAULT=/var/mailserver
+_RDC=/var/www/roundcubemail
+_TMP="${TMPDIR:=$_TMPDIR}"
+_TMPDIR=$(mktemp -dp ${_TMP} .install-XXXXXXXXXX) || exit 1
 
 trap "bye_bye" 1 2 3 13 15
 
