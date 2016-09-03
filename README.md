@@ -89,3 +89,5 @@ Just browse https://ip_address:4200
 Just browse https://ip_address
 
 >*Enjoy!*
+
+Use openbsd-rofs entirely at your own risk. No one will help you.
