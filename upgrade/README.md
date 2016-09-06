@@ -8,6 +8,8 @@ Add 'wxallowed' to the /etc/fstab (rw,wxallowed)
 Update packages
 pkg_add -u
 
+sh /var/mailserver/upgrade/bin/upgrade.sh
+
 Reboot, you re done.
 
 >*Enjoy!*
