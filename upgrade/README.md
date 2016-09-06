@@ -10,6 +10,9 @@ Edit the file /etc/fstab, add 'wxallowed' (rw,wxallowed)
 
 # Update /etc/newsyslog, /etc/login.conf and /etc/mail/aliases
 <code>sh /var/mailserver/upgrade/bin/upgrade.sh</code>
+
+# Get Mtier updates
+/usr/local/sbin/openup
 </pre>
 Reboot, you re done.
 
