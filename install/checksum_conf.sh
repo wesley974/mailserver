@@ -31,6 +31,7 @@ fi
 	/etc/php-5.6.ini \
 	/etc/php-fpm.conf \
 	/etc/nginx/nginx.conf \
+	/etc/mail/aliases \
 	/etc/mail/spamassassin/local.cf \
  	/etc/clamav-milter.conf \
 	/etc/clamd.conf \
