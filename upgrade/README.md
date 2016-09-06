@@ -3,13 +3,14 @@
 
 Boot from the install kernel bsd.rd and choose upgrade.<br>Look at this http://www.openbsd.org/faq/upgrade60.html
 
-Add 'wxallowed' to the /etc/fstab (rw,wxallowed)
+Edit the file /etc/fstab, add 'wxallowed' (rw,wxallowed)
+<pre>
+# Update packages
+<code>pkg_add -u</code>
 
-Update packages
-pkg_add -u
-
-sh /var/mailserver/upgrade/bin/upgrade.sh
-
+# Update /etc/newsyslog, /etc/login.conf and /etc/mail/aliases
+<code>sh /var/mailserver/upgrade/bin/upgrade.sh</code>
+</pre>
 Reboot, you re done.
 
 >*Enjoy!*
