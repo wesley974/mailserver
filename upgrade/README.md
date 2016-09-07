@@ -8,7 +8,7 @@ Edit the file /etc/fstab, add 'wxallowed' (rw,wxallowed)
 # Update packages
 <code>pkg_add -u</code>
 
-# Update /etc/newsyslog, /etc/login.conf and /etc/mail/aliases
+# Update /etc/newsyslog, /etc/login.conf, /etc/mail/aliases and fix certificates, dovecot
 <code>sh /var/mailserver/upgrade/bin/upgrade.sh</code>
 
 # Get Mtier updates
