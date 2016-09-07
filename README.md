@@ -90,4 +90,4 @@ Just browse https://ip_address
 
 >*Enjoy!*
 
-Use openbsd-rofs entirely at your own risk. No one will help you.
+Use mailserver entirely at your own risk. No one will help you.
