@@ -2,9 +2,9 @@ class System
   attr_reader :os_version, :version, :cpu_type, :memory, :needs_update
 
   def initialize
-    @os_version       = %x{uname -r}.strip
+    @os_version       = %x{uname -srv}.strip
     @os_version_short = @os_version.gsub(/\./, "")
-    @cpu_type         = %x{uname -p}.strip
+    @cpu_type         = %x{machine}.strip
     @memory           = %x{sysctl hw.usermem | sed 's/=/ /' | awk '{print $2}'}.to_i / 1048576 + 1
   end
 
