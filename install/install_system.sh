@@ -17,8 +17,8 @@ _TMPDIR=$(mktemp -dp ${_TMP} .install-XXXXXXXXXX) || exit 1
 
 trap "bye_bye" 1 2 3 13 15
 
-if [ $(uname -r) != "5.9" ]; then
-	_err "support only OpenBSD 5.9"
+if [ $(uname -r) != "6.0" ]; then
+	_err "support only OpenBSD 6.0"
 fi
 
 if [ $# -gt 1 ]; then
@@ -46,8 +46,7 @@ echo " -- Create spamassassin's home"
 mkdir -p /var/db/spamassassin
 
 echo " -- Install packages"
-export PKG_PATH=http://ftp.openbsd.org/pub/OpenBSD/5.9/packages/$(machine)/
-pkg_add roundcubemail clamav postfix-3.0.3p0-mysql p5-Mail-SpamAssassin \
+pkg_add roundcubemail clamav postfix--mysql%stable p5-Mail-SpamAssassin \
     dovecot-mysql dovecot-pigeonhole dkimproxy
 if [ "$?" == 1 ]; then
 	_err "install package error"

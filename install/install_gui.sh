@@ -10,8 +10,8 @@ bye_bye() {
         exit 1
 }
 
-if [ $(uname -r) != "5.9" ]; then
-	echo "This only works on OpenBSD 5.9"
+if [ $(uname -r) != "6.0" ]; then
+	echo "This only works on OpenBSD 6.0"
 	exit 1
 fi
 
@@ -40,11 +40,10 @@ echo " -- Create mail folder"
 mkdir -p $_DEFAULT/mail
 
 echo " -- Install packages"
-export PKG_PATH=http://ftp.openbsd.org/pub/OpenBSD/5.9/packages/$(machine)/
-pkg_add ImageMagick mariadb-server php-mysql-5.6.18 php-pdo_mysql-5.6.18 \
-    php-intl-5.6.18 php-zip-5.6.18 xcache gtar-1.28p1 nginx-1.9.10 node \
-    php-pspell-5.6.18 ruby-1.8.7.374p5 ruby-gems-1.8.24 ruby-iconv-1.8.7.374 \
-    ruby-mysql-2.9.1p0 ruby-rake-0.9.2.2p0 php-mcrypt-5.6.18
+pkg_add ImageMagick mariadb-server php-mysql%5.6 php-pdo_mysql%5.6 \
+    php-intl%5.6 php-zip%5.6 xcache gtar-- nginx-- node \
+    php-pspell%5.6 ruby%1.8 ruby-gems ruby-iconv \
+    ruby-mysql ruby-rake php-mcrypt%5.6
 if [ "$?" == 1 ]; then
 	_err "install package error"
 fi
@@ -107,6 +106,7 @@ ln -sf /usr/local/bin/rdoc18 /usr/local/bin/rdoc
 ln -sf /usr/local/bin/ri18 /usr/local/bin/ri
 ln -sf /usr/local/bin/rake18 /usr/local/bin/rake
 ln -sf /usr/local/bin/gem18 /usr/local/bin/gem
+ln -sf /usr/local/bin/testrb18 /usr/local/bin/testrb
 /usr/local/bin/gem install bundler
 ln -sf /usr/local/bin/bundle18 /usr/local/bin/bundle
 ln -sf /usr/local/bin/bundler18 /usr/local/bin/bundler

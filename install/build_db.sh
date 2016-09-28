@@ -14,4 +14,6 @@ if [ $? == 0 ]; then
 	_err "mail database already exist"
 fi
 
-cd $_DEFAULT/admin && env LD_PRELOAD=/usr/local/lib/ruby/gems/1.8/gems/mysql-2.9.1/lib/mysql/mysql_api.so rake -s db:setup RAIL_ENV=production
+#cd $_DEFAULT/admin && env LD_PRELOAD=/usr/local/lib/ruby/gems/1.8/gems/mysql-2.9.1/lib/mysql/mysql_api.so rake -s db:setup RAIL_ENV=production
+
+cd $_DEFAULT/admin && rake -s db:setup RAIL_ENV=production
