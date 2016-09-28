@@ -92,7 +92,7 @@ $config['des_key'] = '744c0385d863584ecb28baf2';
 
 # null == default
 // mime magic database
-$config['mime_magic'] = '/usr/share/misc/magic';
+$config['mime_magic'] = '/usr/local/share/misc/magic.mgc';
 
 // ----------------------------------
 // PLUGINS
