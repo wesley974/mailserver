@@ -47,7 +47,7 @@ mkdir -p /var/db/spamassassin
 
 echo " -- Install packages"
 pkg_add roundcubemail clamav postfix--mysql%stable p5-Mail-SpamAssassin \
-    dovecot-mysql dovecot-pigeonhole dkimproxy
+    dovecot-mysql dovecot-pigeonhole dkimproxy libmagic
 if [ "$?" == 1 ]; then
 	_err "install package error"
 fi
