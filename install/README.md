@@ -32,3 +32,9 @@
 
 ### enable_dkim.sh
 >Enable dkim for all domains.
+
+### export_app_db.sh
+> Export mail database, and a specification file for mail folder. The files are app.sql.gz and special.var_mailserver_mail located in the backup folder.
+
+### import_app_db.sh
+> Import mail database, and populate the mail folder.
