@@ -91,3 +91,4 @@ Just browse https://ip_address
 >*Enjoy!*
 
 Use mailserver entirely at your own risk. No one will help you.
+And if you like the project and if you wish updates, support it adding a star (★).
