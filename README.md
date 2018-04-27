@@ -20,7 +20,7 @@ Includes:
 You get access to the account app via Roundcube (admin button).
 
 ## Installation
-
+Type this at question 'Set name(s)?': -g* -x* +xb*
 >**From a fresh OpenBSD install...**
 
 #### Get git
