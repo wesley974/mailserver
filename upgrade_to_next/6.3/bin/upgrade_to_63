@@ -1,5 +1,6 @@
 #!/bin/sh
 set -e
+_DEFAULT=./templates
 
 /usr/sbin/syspatch
 
@@ -25,3 +26,9 @@ pkg_delete -a
 chgrp _dovecot /usr/local/libexec/dovecot/dovecot-lda
 chmod 4750 /usr/local/libexec/dovecot/dovecot-lda
 /usr/sbin/rcctl restart dovecot
+
+install -m 0600 -o root -g wheel $_DEFAULT/pf.conf /etc
+/sbin/pfctl -f /etc/pf.conf
+
+install -m 0644 -o root -g wheel $_DEFAULT/sshd_config /etc/ssh
+/usr/sbin/rcctl restart sshd
