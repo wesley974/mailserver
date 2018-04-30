@@ -1,0 +1,35 @@
+#!/bin/sh
+set -e
+
+/usr/sbin/syspatch
+
+/usr/sbin/pkg_add -u
+
+rm /var/db/GeoIP/*
+rm -fr /var/db/clamav/*
+rm -fr /var/spool/clamav/*
+rm -fr /var/clamav/quarantine/*
+rm -fr /var/clamav/tmp/*
+rm -rf /var/dovecot/*
+rm -rf /etc/mail/spamassassin/sa-update-keys
+rm -f /etc/php-5.6/php-5.6.sample/*
+rm -rf /var/www/roundcubemail/logs/*
+
+pkg_delete -a
+
+/usr/bin/openssl genrsa -out /etc/ssl/private/mailserver.key 2048 2>/dev/null
+/usr/bin/openssl req -new -key /etc/ssl/private/mailserver.key \
+    -out $_TMPDIR/mailserver.csr -subj "/CN=`hostname`" 2>/dev/null
+/usr/bin/openssl x509 -req -days 1095 -in $_TMPDIR/mailserver.csr \
+    -signkey /etc/ssl/private/mailserver.key -out /etc/ssl/mailserver.crt \
+	2>/dev/null
+
+/usr/sbin/rcctl stop clamd
+/usr/sbin/rcctl stop freshclam
+/usr/local/bin/freshclam --no-warnings
+/usr/sbin/rcctl start freshclam
+/usr/sbin/rcctl start clamd
+
+chgrp _dovecot /usr/local/libexec/dovecot/dovecot-lda
+chmod 4750 /usr/local/libexec/dovecot/dovecot-lda
+/usr/sbin/rcctl restart dovecot
