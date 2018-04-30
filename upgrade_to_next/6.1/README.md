@@ -12,8 +12,8 @@ You don't need to run sysmerge here.
 
 <pre>
 <code># Just run:</code>
-<code>cd /var/mailserver/upgrade_to_next
-<code>upgrade_to_61</code>
+<code>cd /var/mailserver/upgrade_to_next/6.1
+<code>./bin/upgrade_to_61</code>
 </pre>
 
 Reboot, you re done.
