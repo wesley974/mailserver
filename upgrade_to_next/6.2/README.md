@@ -21,4 +21,4 @@ Reboot, you re done.
 >*Enjoy!*
 
 Use mailserver entirely at your own risk. No one will help you.
-And if you like the project and if you wish updates, support it adding a star (.).
+And if you like the project and if you wish updates, support it adding a star (★).
