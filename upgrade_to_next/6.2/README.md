@@ -1,11 +1,14 @@
 # OpenBSD Mailserver - upgrade to 6.2
 
-## Step 1, grab bsd.rd (6.2)
-Get and boot from the install kernel bsd.rd (6.2) and choose upgrade.
+## Step 1, follow guide (6.1 to 6.2)
+Please read this: http://www.openbsd.org/faq/upgrade62.html
+
+## Step 2, grab bsd.rd (6.2)
+
+Get and boot from the install kernel bsd.rd (6.3) and choose upgrade.
+
 At the upgrade process, type this at question 'Set name(s)?': -g* -x* +xb*
 
-## Step 2, follow guide (6.1 to 6.2)
-Please read following this: http://www.openbsd.org/faq/upgrade62.html
 You don't need to run sysmerge here.
 
 ## Last step :)
